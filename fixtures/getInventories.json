@@ -1,0 +1,26 @@
+{
+  "status": "SUCCESS",
+  "inventories": [
+    {
+      "inventory_id": 115553,
+      "name": "Domyślny",
+      "description": "",
+      "languages": [
+        "pl"
+      ],
+      "default_language": "pl",
+      "price_groups": [
+        100823,
+        100830
+      ],
+      "default_price_group": 100823,
+      "warehouses": [
+        "bl_153201",
+        "bl_153210"
+      ],
+      "default_warehouse": "bl_153201",
+      "reservations": true,
+      "is_default": true
+    }
+  ]
+}

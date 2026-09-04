@@ -1,0 +1,45 @@
+{
+  "status": "SUCCESS",
+  "statuses": [
+    {
+      "id": 513687,
+      "name": "Nowe zamówienia",
+      "color": "#0077DA",
+      "group_id": 105373,
+      "is_primary": 1,
+      "name_for_customer": "Przyjęto nowe zamówienie"
+    },
+    {
+      "id": 513688,
+      "name": "Do wysłania",
+      "color": "#EA864D",
+      "group_id": 105373,
+      "is_primary": 0,
+      "name_for_customer": "Gotowe do wysłania"
+    },
+    {
+      "id": 513689,
+      "name": "Wysłane",
+      "color": "#22A564",
+      "group_id": 105373,
+      "is_primary": 0,
+      "name_for_customer": "Produkty zostały wysłane"
+    },
+    {
+      "id": 513690,
+      "name": "Anulowane",
+      "color": "#D54839",
+      "group_id": 105373,
+      "is_primary": 0,
+      "name_for_customer": "Zamówienie zostało anulowane"
+    },
+    {
+      "id": 513691,
+      "name": "Przykładowy status",
+      "color": "#4E565F",
+      "group_id": 105373,
+      "is_primary": 0,
+      "name_for_customer": "Przykładowy status"
+    }
+  ]
+}

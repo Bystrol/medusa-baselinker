@@ -1,0 +1,149 @@
+{
+  "status": "SUCCESS",
+  "products": {
+    "682782169": {
+      "id": 682782169,
+      "ean": "5901234123457",
+      "asin": "",
+      "sku": "SEED-SIMPLE-001",
+      "name": "Seed Simple Product",
+      "parent_id": 0,
+      "stock": {
+        "bl_153201": 23,
+        "bl_153210": 0
+      },
+      "prices": {
+        "100823": 49.99,
+        "100830": 49.99
+      }
+    },
+    "682782170": {
+      "id": 682782170,
+      "ean": "5901234123464",
+      "asin": "",
+      "sku": "SEED-VARIANT-001",
+      "name": "Seed Variant Product",
+      "parent_id": 0,
+      "stock": {
+        "bl_153201": 12,
+        "bl_153210": 0
+      },
+      "prices": {
+        "100823": 79,
+        "100830": 79
+      }
+    },
+    "682782173": {
+      "id": 682782173,
+      "ean": "",
+      "asin": "",
+      "sku": "SEED-PRICE-001",
+      "name": "Seed Decimal Price Product",
+      "parent_id": 0,
+      "stock": {
+        "bl_153201": 5,
+        "bl_153210": 0
+      },
+      "prices": {
+        "100823": 12.34,
+        "100830": 12.34
+      }
+    },
+    "682782174": {
+      "id": 682782174,
+      "ean": "",
+      "asin": "",
+      "sku": "SEED-MINIMAL-001",
+      "name": "Seed Minimal Product",
+      "parent_id": 0,
+      "stock": {
+        "bl_153201": 0,
+        "bl_153210": 0
+      },
+      "prices": {
+        "100823": 0,
+        "100830": 0
+      }
+    },
+    "682782175": {
+      "id": 682782175,
+      "ean": "",
+      "asin": "",
+      "sku": "SEED-DUP-001",
+      "name": "Seed Duplicate Name",
+      "parent_id": 0,
+      "stock": {
+        "bl_153201": 7,
+        "bl_153210": 0
+      },
+      "prices": {
+        "100823": 19.99,
+        "100830": 19.99
+      }
+    },
+    "682782176": {
+      "id": 682782176,
+      "ean": "",
+      "asin": "",
+      "sku": "SEED-DUP-002",
+      "name": "Seed Duplicate Name",
+      "parent_id": 0,
+      "stock": {
+        "bl_153201": 4,
+        "bl_153210": 0
+      },
+      "prices": {
+        "100823": 24.99,
+        "100830": 24.99
+      }
+    },
+    "682782177": {
+      "id": 682782177,
+      "ean": "",
+      "asin": "",
+      "sku": "SEED-SPECIAL-001",
+      "name": "Zestaw \"Premium\" – żółć & ćma / 100% bawełna",
+      "parent_id": 0,
+      "stock": {
+        "bl_153201": 2,
+        "bl_153210": 0
+      },
+      "prices": {
+        "100823": 149.5,
+        "100830": 149.5
+      }
+    },
+    "682782178": {
+      "id": 682782178,
+      "ean": "",
+      "asin": "",
+      "sku": "SEED-WAREHOUSE-001",
+      "name": "Seed Multi Warehouse Product",
+      "parent_id": 0,
+      "stock": {
+        "bl_153201": 12,
+        "bl_153210": 8
+      },
+      "prices": {
+        "100823": 59,
+        "100830": 59
+      }
+    },
+    "682782179": {
+      "id": 682782179,
+      "ean": "",
+      "asin": "",
+      "sku": "SEED-PRICEGROUP-001",
+      "name": "Seed Multi Price Group Product",
+      "parent_id": 0,
+      "stock": {
+        "bl_153201": 6,
+        "bl_153210": 0
+      },
+      "prices": {
+        "100823": 100,
+        "100830": 110
+      }
+    }
+  }
+}

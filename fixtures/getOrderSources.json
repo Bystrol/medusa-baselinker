@@ -1,0 +1,11 @@
+{
+  "status": "SUCCESS",
+  "sources": {
+    "personal": {
+      "0": "Osobiście/tel."
+    },
+    "order_return": {
+      "0": "Zwrot do zamówienia"
+    }
+  }
+}

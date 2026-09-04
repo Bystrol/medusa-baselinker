@@ -1,0 +1,31 @@
+{
+  "status": "SUCCESS",
+  "warehouses": [
+    {
+      "warehouse_type": "bl",
+      "warehouse_id": 153201,
+      "internal_warehouse_id": 153201,
+      "name": "Domyślny",
+      "description": null,
+      "stock_edition": true,
+      "is_default": true,
+      "address": "",
+      "postcode": "",
+      "city": "",
+      "country": "PL"
+    },
+    {
+      "warehouse_type": "bl",
+      "warehouse_id": 153210,
+      "internal_warehouse_id": 153210,
+      "name": "Medusa Seed Warehouse",
+      "description": "Second warehouse used by the medusa-base seed script",
+      "stock_edition": true,
+      "is_default": false,
+      "address": "",
+      "postcode": "",
+      "city": "",
+      "country": "PL"
+    }
+  ]
+}

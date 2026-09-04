@@ -1,0 +1,33 @@
+{
+  "status": "SUCCESS",
+  "price_groups": [
+    {
+      "price_group_id": 100823,
+      "name": "Domyślna",
+      "description": null,
+      "currency": "PLN",
+      "is_default": true,
+      "price_group_type": "standard",
+      "source_price_group_id": 0,
+      "price_multiplier": 0,
+      "price_addition": 0,
+      "is_bundle_price_calculated": false,
+      "bundle_price_multiplier": 0,
+      "bundle_price_addition": 0
+    },
+    {
+      "price_group_id": 100830,
+      "name": "Medusa Seed EUR",
+      "description": "Second price group used by the medusa-base seed script",
+      "currency": "EUR",
+      "is_default": false,
+      "price_group_type": "standard",
+      "source_price_group_id": 0,
+      "price_multiplier": 1,
+      "price_addition": 0,
+      "is_bundle_price_calculated": false,
+      "bundle_price_multiplier": 1,
+      "bundle_price_addition": 0
+    }
+  ]
+}

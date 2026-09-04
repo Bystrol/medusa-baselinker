@@ -1,0 +1,15 @@
+{
+  "status": "SUCCESS",
+  "extra_fields": [
+    {
+      "extra_field_id": 1,
+      "name": "Pole dodatkowe 1",
+      "editor_type": "text"
+    },
+    {
+      "extra_field_id": 2,
+      "name": "Pole dodatkowe 2",
+      "editor_type": "text"
+    }
+  ]
+}

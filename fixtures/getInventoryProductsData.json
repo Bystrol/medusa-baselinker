@@ -1,0 +1,487 @@
+{
+  "status": "SUCCESS",
+  "products": {
+    "682782169": {
+      "is_bundle": false,
+      "ean": "5901234123457",
+      "asin": "",
+      "parent_id": 0,
+      "sku": "SEED-SIMPLE-001",
+      "tags": [],
+      "tax_rate": 23,
+      "weight": 0.5,
+      "height": 10,
+      "width": 20,
+      "length": 30,
+      "star": 0,
+      "category_id": 0,
+      "manufacturer_id": 0,
+      "text_fields": {
+        "name": "Seed Simple Product",
+        "description": "A plain product with no variants."
+      },
+      "stock": {
+        "bl_153201": 23,
+        "bl_153210": 0
+      },
+      "reservations": {
+        "bl_153201": 0,
+        "bl_153210": 0
+      },
+      "thresholds": {
+        "bl_153201": 0,
+        "bl_153210": 0
+      },
+      "incoming": {
+        "bl_153201": 0,
+        "bl_153210": 0
+      },
+      "prices": {
+        "100823": 49.99,
+        "100830": 49.99
+      },
+      "locations": {
+        "bl_153201": "",
+        "bl_153210": ""
+      },
+      "links": {},
+      "average_cost": 0,
+      "average_landed_cost": 0,
+      "images": {
+        "1": "https://picsum.photos/seed/simple/600/600"
+      },
+      "videos": {}
+    },
+    "682782170": {
+      "is_bundle": false,
+      "ean": "5901234123464",
+      "asin": "",
+      "parent_id": 0,
+      "sku": "SEED-VARIANT-001",
+      "tags": [],
+      "tax_rate": 23,
+      "weight": 0.4,
+      "height": 0,
+      "width": 0,
+      "length": 0,
+      "star": 0,
+      "category_id": 0,
+      "manufacturer_id": 0,
+      "text_fields": {
+        "name": "Seed Variant Product",
+        "description": "A product split into two variants."
+      },
+      "stock": {
+        "bl_153201": 12,
+        "bl_153210": 0
+      },
+      "reservations": {
+        "bl_153201": 0,
+        "bl_153210": 0
+      },
+      "thresholds": {
+        "bl_153201": 0,
+        "bl_153210": 0
+      },
+      "incoming": {
+        "bl_153201": 0,
+        "bl_153210": 0
+      },
+      "prices": {
+        "100823": 79,
+        "100830": 79
+      },
+      "locations": {
+        "bl_153201": "",
+        "bl_153210": ""
+      },
+      "links": {},
+      "average_cost": 0,
+      "average_landed_cost": 0,
+      "variants": {
+        "682782171": {
+          "name": "Seed Variant Product - Size S",
+          "ean": "5901234123471",
+          "asin": "",
+          "sku": "SEED-VARIANT-001-S",
+          "stock": {
+            "bl_153201": 10,
+            "bl_153210": 0
+          },
+          "locations": {
+            "bl_153201": "",
+            "bl_153210": ""
+          },
+          "prices": {
+            "100823": 79,
+            "100830": 79
+          }
+        },
+        "682782172": {
+          "name": "Seed Variant Product - Size L",
+          "ean": "5901234123488",
+          "asin": "",
+          "sku": "SEED-VARIANT-001-L",
+          "stock": {
+            "bl_153201": 2,
+            "bl_153210": 0
+          },
+          "locations": {
+            "bl_153201": "",
+            "bl_153210": ""
+          },
+          "prices": {
+            "100823": "89.00",
+            "100830": "89.00"
+          }
+        }
+      },
+      "images": {
+        "1": "https://picsum.photos/seed/variant/600/600"
+      },
+      "videos": {}
+    },
+    "682782173": {
+      "is_bundle": false,
+      "ean": "",
+      "asin": "",
+      "parent_id": 0,
+      "sku": "SEED-PRICE-001",
+      "tags": [],
+      "tax_rate": 23,
+      "weight": 0,
+      "height": 0,
+      "width": 0,
+      "length": 0,
+      "star": 0,
+      "category_id": 0,
+      "manufacturer_id": 0,
+      "text_fields": {
+        "name": "Seed Decimal Price Product",
+        "description": "Priced at 12.34 to expose the unit format."
+      },
+      "stock": {
+        "bl_153201": 5,
+        "bl_153210": 0
+      },
+      "reservations": {
+        "bl_153201": 0,
+        "bl_153210": 0
+      },
+      "thresholds": {
+        "bl_153201": 0,
+        "bl_153210": 0
+      },
+      "incoming": {
+        "bl_153201": 0,
+        "bl_153210": 0
+      },
+      "prices": {
+        "100823": 12.34,
+        "100830": 12.34
+      },
+      "locations": {
+        "bl_153201": "",
+        "bl_153210": ""
+      },
+      "links": {},
+      "average_cost": 0,
+      "average_landed_cost": 0,
+      "images": {},
+      "videos": {}
+    },
+    "682782174": {
+      "is_bundle": false,
+      "ean": "",
+      "asin": "",
+      "parent_id": 0,
+      "sku": "SEED-MINIMAL-001",
+      "tags": [],
+      "tax_rate": 0,
+      "weight": 0,
+      "height": 0,
+      "width": 0,
+      "length": 0,
+      "star": 0,
+      "category_id": 0,
+      "manufacturer_id": 0,
+      "text_fields": {
+        "name": "Seed Minimal Product"
+      },
+      "stock": {
+        "bl_153201": 0,
+        "bl_153210": 0
+      },
+      "reservations": {
+        "bl_153201": 0,
+        "bl_153210": 0
+      },
+      "thresholds": {
+        "bl_153201": 0,
+        "bl_153210": 0
+      },
+      "incoming": {
+        "bl_153201": 0,
+        "bl_153210": 0
+      },
+      "prices": {
+        "100823": 0,
+        "100830": 0
+      },
+      "locations": {
+        "bl_153201": "",
+        "bl_153210": ""
+      },
+      "links": {},
+      "average_cost": 0,
+      "average_landed_cost": 0,
+      "images": {},
+      "videos": {}
+    },
+    "682782175": {
+      "is_bundle": false,
+      "ean": "",
+      "asin": "",
+      "parent_id": 0,
+      "sku": "SEED-DUP-001",
+      "tags": [],
+      "tax_rate": 23,
+      "weight": 0,
+      "height": 0,
+      "width": 0,
+      "length": 0,
+      "star": 0,
+      "category_id": 0,
+      "manufacturer_id": 0,
+      "text_fields": {
+        "name": "Seed Duplicate Name",
+        "description": "First of two products with an identical name."
+      },
+      "stock": {
+        "bl_153201": 7,
+        "bl_153210": 0
+      },
+      "reservations": {
+        "bl_153201": 0,
+        "bl_153210": 0
+      },
+      "thresholds": {
+        "bl_153201": 0,
+        "bl_153210": 0
+      },
+      "incoming": {
+        "bl_153201": 0,
+        "bl_153210": 0
+      },
+      "prices": {
+        "100823": 19.99,
+        "100830": 19.99
+      },
+      "locations": {
+        "bl_153201": "",
+        "bl_153210": ""
+      },
+      "links": {},
+      "average_cost": 0,
+      "average_landed_cost": 0,
+      "images": {},
+      "videos": {}
+    },
+    "682782176": {
+      "is_bundle": false,
+      "ean": "",
+      "asin": "",
+      "parent_id": 0,
+      "sku": "SEED-DUP-002",
+      "tags": [],
+      "tax_rate": 23,
+      "weight": 0,
+      "height": 0,
+      "width": 0,
+      "length": 0,
+      "star": 0,
+      "category_id": 0,
+      "manufacturer_id": 0,
+      "text_fields": {
+        "name": "Seed Duplicate Name",
+        "description": "Second of two products with an identical name."
+      },
+      "stock": {
+        "bl_153201": 4,
+        "bl_153210": 0
+      },
+      "reservations": {
+        "bl_153201": 0,
+        "bl_153210": 0
+      },
+      "thresholds": {
+        "bl_153201": 0,
+        "bl_153210": 0
+      },
+      "incoming": {
+        "bl_153201": 0,
+        "bl_153210": 0
+      },
+      "prices": {
+        "100823": 24.99,
+        "100830": 24.99
+      },
+      "locations": {
+        "bl_153201": "",
+        "bl_153210": ""
+      },
+      "links": {},
+      "average_cost": 0,
+      "average_landed_cost": 0,
+      "images": {},
+      "videos": {}
+    },
+    "682782177": {
+      "is_bundle": false,
+      "ean": "",
+      "asin": "",
+      "parent_id": 0,
+      "sku": "SEED-SPECIAL-001",
+      "tags": [],
+      "tax_rate": 23,
+      "weight": 0,
+      "height": 0,
+      "width": 0,
+      "length": 0,
+      "star": 0,
+      "category_id": 0,
+      "manufacturer_id": 0,
+      "text_fields": {
+        "name": "Zestaw \"Premium\" – żółć & ćma / 100% bawełna",
+        "description": "Non-ASCII characters, quotes and a slash in the name."
+      },
+      "stock": {
+        "bl_153201": 2,
+        "bl_153210": 0
+      },
+      "reservations": {
+        "bl_153201": 0,
+        "bl_153210": 0
+      },
+      "thresholds": {
+        "bl_153201": 0,
+        "bl_153210": 0
+      },
+      "incoming": {
+        "bl_153201": 0,
+        "bl_153210": 0
+      },
+      "prices": {
+        "100823": 149.5,
+        "100830": 149.5
+      },
+      "locations": {
+        "bl_153201": "",
+        "bl_153210": ""
+      },
+      "links": {},
+      "average_cost": 0,
+      "average_landed_cost": 0,
+      "images": {},
+      "videos": {}
+    },
+    "682782178": {
+      "is_bundle": false,
+      "ean": "",
+      "asin": "",
+      "parent_id": 0,
+      "sku": "SEED-WAREHOUSE-001",
+      "tags": [],
+      "tax_rate": 23,
+      "weight": 0,
+      "height": 0,
+      "width": 0,
+      "length": 0,
+      "star": 0,
+      "category_id": 0,
+      "manufacturer_id": 0,
+      "text_fields": {
+        "name": "Seed Multi Warehouse Product",
+        "description": "Stock lives in two warehouses at once."
+      },
+      "stock": {
+        "bl_153201": 12,
+        "bl_153210": 8
+      },
+      "reservations": {
+        "bl_153201": 0,
+        "bl_153210": 0
+      },
+      "thresholds": {
+        "bl_153201": 0,
+        "bl_153210": 0
+      },
+      "incoming": {
+        "bl_153201": 0,
+        "bl_153210": 0
+      },
+      "prices": {
+        "100823": 59,
+        "100830": 59
+      },
+      "locations": {
+        "bl_153201": "",
+        "bl_153210": ""
+      },
+      "links": {},
+      "average_cost": 0,
+      "average_landed_cost": 0,
+      "images": {},
+      "videos": {}
+    },
+    "682782179": {
+      "is_bundle": false,
+      "ean": "",
+      "asin": "",
+      "parent_id": 0,
+      "sku": "SEED-PRICEGROUP-001",
+      "tags": [],
+      "tax_rate": 23,
+      "weight": 0,
+      "height": 0,
+      "width": 0,
+      "length": 0,
+      "star": 0,
+      "category_id": 0,
+      "manufacturer_id": 0,
+      "text_fields": {
+        "name": "Seed Multi Price Group Product",
+        "description": "Each price group carries a different price."
+      },
+      "stock": {
+        "bl_153201": 6,
+        "bl_153210": 0
+      },
+      "reservations": {
+        "bl_153201": 0,
+        "bl_153210": 0
+      },
+      "thresholds": {
+        "bl_153201": 0,
+        "bl_153210": 0
+      },
+      "incoming": {
+        "bl_153201": 0,
+        "bl_153210": 0
+      },
+      "prices": {
+        "100823": 100,
+        "100830": 110
+      },
+      "locations": {
+        "bl_153201": "",
+        "bl_153210": ""
+      },
+      "links": {},
+      "average_cost": 0,
+      "average_landed_cost": 0,
+      "images": {},
+      "videos": {}
+    }
+  }
+}

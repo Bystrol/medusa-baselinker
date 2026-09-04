@@ -1,0 +1,1897 @@
+{
+  "status": "SUCCESS",
+  "couriers": [
+    {
+      "code": "acs",
+      "name": "ACS"
+    },
+    {
+      "code": "ait",
+      "name": "AIT (Panther)"
+    },
+    {
+      "code": "ajioshipping",
+      "name": "Ajio Shipping"
+    },
+    {
+      "code": "aliexpressshippingbr",
+      "name": "AliExpress Shipping - Brazil"
+    },
+    {
+      "code": "aliexpressshippingpl",
+      "name": "AliExpress Shipping - Poland"
+    },
+    {
+      "code": "aliexpressshippingus",
+      "name": "AliExpress Shipping - US"
+    },
+    {
+      "code": "allegrokurier",
+      "name": "Allegro.pl"
+    },
+    {
+      "code": "fulfillmentallegro",
+      "name": "Allegro Fulfillment"
+    },
+    {
+      "code": "allekurier",
+      "name": "Allekurier.pl"
+    },
+    {
+      "code": "allpacka",
+      "name": "Pactic"
+    },
+    {
+      "code": "allpost",
+      "name": "allPost"
+    },
+    {
+      "code": "altexshipping",
+      "name": "Altex Shipping"
+    },
+    {
+      "code": "alzashipping",
+      "name": "Alza Shipping"
+    },
+    {
+      "code": "amazonpack",
+      "name": "Amazon Buy Shipping"
+    },
+    {
+      "code": "amazoneasyship",
+      "name": "Amazon Easy Ship"
+    },
+    {
+      "code": "amazoneasyshipbr",
+      "name": "Amazon Easy Ship BR"
+    },
+    {
+      "code": "amazoneasyshippl",
+      "name": "Amazon Easy Ship EU"
+    },
+    {
+      "code": "amazon_self_delivery",
+      "name": "Amazon Self Delivery"
+    },
+    {
+      "code": "amazon_self_ship",
+      "name": "Amazon Self Ship"
+    },
+    {
+      "code": "amazonshipping",
+      "name": "Amazon Shipping"
+    },
+    {
+      "code": "amazonsmartconnect",
+      "name": "Amazon Seller Flex"
+    },
+    {
+      "code": "amazonvdf",
+      "name": "Amazon Vendor Direct Fulfillment"
+    },
+    {
+      "code": "ambro",
+      "name": "Ambro"
+    },
+    {
+      "code": "americanas_entrega",
+      "name": "Americanas Entrega"
+    },
+    {
+      "code": "andesmar",
+      "name": "Andesmar"
+    },
+    {
+      "code": "andreani",
+      "name": "Andreani"
+    },
+    {
+      "code": "angeloni_shipping",
+      "name": "Angeloni Shipping"
+    },
+    {
+      "code": "apaczka",
+      "name": "Apaczka"
+    },
+    {
+      "code": "apcovernight",
+      "name": "APC Overnight"
+    },
+    {
+      "code": "aramex",
+      "name": "Aramex International"
+    },
+    {
+      "code": "aramis_shipping",
+      "name": "Aramis Shipping"
+    },
+    {
+      "code": "asendia",
+      "name": "Asendia"
+    },
+    {
+      "code": "backship_eu",
+      "name": "BackShip By Back Market EU"
+    },
+    {
+      "code": "backship_us",
+      "name": "BackShip By Back Market US"
+    },
+    {
+      "code": "balikobot",
+      "name": "Balikobot"
+    },
+    {
+      "code": "belgo_shipping",
+      "name": "Belgo Shipping"
+    },
+    {
+      "code": "blconnectpackages",
+      "name": "Base Connect"
+    },
+    {
+      "code": "bliskapaczka",
+      "name": "Bliskapaczka.pl"
+    },
+    {
+      "code": "blowhorn",
+      "name": "Blowhorn"
+    },
+    {
+      "code": "blpaczka",
+      "name": "Base Courier (BLPaczka)"
+    },
+    {
+      "code": "bluedart",
+      "name": "Blue Dart"
+    },
+    {
+      "code": "blz_shipping",
+      "name": "BLZ Shipping"
+    },
+    {
+      "code": "bol_shipping",
+      "name": "Bol Shipping"
+    },
+    {
+      "code": "bookurier",
+      "name": "Bookurier"
+    },
+    {
+      "code": "bombino_express",
+      "name": "Bombino Express"
+    },
+    {
+      "code": "box_now",
+      "name": "BOX NOW"
+    },
+    {
+      "code": "bps",
+      "name": "BPS"
+    },
+    {
+      "code": "brcommerce",
+      "name": "BRCommerce"
+    },
+    {
+      "code": "brokersystem",
+      "name": "Broker System"
+    },
+    {
+      "code": "buscape_shipping",
+      "name": "Buscape Shipping"
+    },
+    {
+      "code": "cargus",
+      "name": "Cargus"
+    },
+    {
+      "code": "cargowale",
+      "name": "Cargowale"
+    },
+    {
+      "code": "casa_shipping",
+      "name": "Casa & Video Shipping"
+    },
+    {
+      "code": "casasbahia",
+      "name": "Casas Bahia Entrega"
+    },
+    {
+      "code": "ceskaposta",
+      "name": "Ceska posta"
+    },
+    {
+      "code": "celship",
+      "name": "Cel.ro"
+    },
+    {
+      "code": "cblog",
+      "name": "CBLog"
+    },
+    {
+      "code": "cirro",
+      "name": "Cirro"
+    },
+    {
+      "code": "clickpost",
+      "name": "Clickpost"
+    },
+    {
+      "code": "colis_prive",
+      "name": "Colis Prive"
+    },
+    {
+      "code": "colissimo",
+      "name": "Colissimo"
+    },
+    {
+      "code": "comfortflex_shipping",
+      "name": "Comfortflex Shipping"
+    },
+    {
+      "code": "ctt_express",
+      "name": "CTT Express"
+    },
+    {
+      "code": "coppel_envios",
+      "name": "Coppel Envios"
+    },
+    {
+      "code": "curiera",
+      "name": "Curiera"
+    },
+    {
+      "code": "correios",
+      "name": "Correios"
+    },
+    {
+      "code": "correo_argentino",
+      "name": "Correo Argentino"
+    },
+    {
+      "code": "correos_express",
+      "name": "Correos Express"
+    },
+    {
+      "code": "courier_center",
+      "name": "Courier Center"
+    },
+    {
+      "code": "cruzdelsur",
+      "name": "Cruz Del Sur"
+    },
+    {
+      "code": "czechlog",
+      "name": "Paxy"
+    },
+    {
+      "code": "daakit",
+      "name": "Daakit"
+    },
+    {
+      "code": "dachser",
+      "name": "Dachser"
+    },
+    {
+      "code": "dafitimilkrun",
+      "name": "Dafiti Milkrun"
+    },
+    {
+      "code": "dafitishipping",
+      "name": "Dafiti Shipping"
+    },
+    {
+      "code": "datafrete",
+      "name": "DATAFRETE"
+    },
+    {
+      "code": "dbschenker",
+      "name": "DB Schenker (deprecated)"
+    },
+    {
+      "code": "dbschenker_intl",
+      "name": "DB Schenker (new)"
+    },
+    {
+      "code": "decathlon_br",
+      "name": "Decathlon BR Shipping"
+    },
+    {
+      "code": "deligoo",
+      "name": "DeliGoo"
+    },
+    {
+      "code": "delhivery",
+      "name": "Delhivery"
+    },
+    {
+      "code": "delhivery_b2b",
+      "name": "Delhivery B2B"
+    },
+    {
+      "code": "deutschepost",
+      "name": "Deutsche Post"
+    },
+    {
+      "code": "deutschepost_intl",
+      "name": "Deutsche Post International"
+    },
+    {
+      "code": "dhl",
+      "name": "DHL PL"
+    },
+    {
+      "code": "dhlde",
+      "name": "DHL DE (deprecated)"
+    },
+    {
+      "code": "dhlde_v2",
+      "name": "DHL DE (new)"
+    },
+    {
+      "code": "dhl_benelux",
+      "name": "DHL eCommerce Benelux"
+    },
+    {
+      "code": "dhl_ecommerce_europe",
+      "name": "DHL eCommerce Europe"
+    },
+    {
+      "code": "dhlexpress",
+      "name": "DHL Express"
+    },
+    {
+      "code": "dhl_freight",
+      "name": "DHL Freight"
+    },
+    {
+      "code": "dhl_freight_se",
+      "name": "DHL Freight SE"
+    },
+    {
+      "code": "dhluk",
+      "name": "DHL Parcel UK"
+    },
+    {
+      "code": "dpd",
+      "name": "DPD PL"
+    },
+    {
+      "code": "dpd_fr",
+      "name": "DPD FR"
+    },
+    {
+      "code": "dpd_meta",
+      "name": "DPD Meta"
+    },
+    {
+      "code": "dpd_meta_bartolini",
+      "name": "Bartolini"
+    },
+    {
+      "code": "dpdde_new",
+      "name": "DPD DE (new)"
+    },
+    {
+      "code": "dpdcz",
+      "name": "DPD CZ"
+    },
+    {
+      "code": "dpdde",
+      "name": "DPD DE"
+    },
+    {
+      "code": "dpdhu",
+      "name": "DPD HU"
+    },
+    {
+      "code": "dpdlt",
+      "name": "DPD LT"
+    },
+    {
+      "code": "dpdlv",
+      "name": "DPD LV"
+    },
+    {
+      "code": "dpdee",
+      "name": "DPD EE"
+    },
+    {
+      "code": "dpdro",
+      "name": "DPD RO"
+    },
+    {
+      "code": "dpdsk",
+      "name": "DPD SK"
+    },
+    {
+      "code": "dpduk",
+      "name": "DPD UK"
+    },
+    {
+      "code": "dragon_star",
+      "name": "Dragon Star"
+    },
+    {
+      "code": "dropshipping_entregar",
+      "name": "Dropshipping Entregar"
+    },
+    {
+      "code": "dsv_generic",
+      "name": "DSV Generic"
+    },
+    {
+      "code": "dsv_xpress",
+      "name": "DSV XPress"
+    },
+    {
+      "code": "dts",
+      "name": "Zadbano"
+    },
+    {
+      "code": "dtdc",
+      "name": "DTDC"
+    },
+    {
+      "code": "dxexpress",
+      "name": "DX Express"
+    },
+    {
+      "code": "dxfreight",
+      "name": "DX Freight"
+    },
+    {
+      "code": "easypost",
+      "name": "EasyPost"
+    },
+    {
+      "code": "easypost_apc",
+      "name": "APC"
+    },
+    {
+      "code": "easypost_asendia",
+      "name": "ASENDIA"
+    },
+    {
+      "code": "easypost_depostuk",
+      "name": "Deutsche Post UK"
+    },
+    {
+      "code": "easypost_dhlecs",
+      "name": "DHL Ecommerce"
+    },
+    {
+      "code": "easypost_epost",
+      "name": "ePost"
+    },
+    {
+      "code": "easypost_parcelforce",
+      "name": "Parcelforce"
+    },
+    {
+      "code": "easypost_usps",
+      "name": "USPS by EasyPost"
+    },
+    {
+      "code": "ebayshipping",
+      "name": "MenedzerWysylek.pl"
+    },
+    {
+      "code": "ebayshipping_original",
+      "name": "eBay Shipping"
+    },
+    {
+      "code": "ecomexpress",
+      "name": "Ecom Express"
+    },
+    {
+      "code": "ecommerce_intl",
+      "name": "E-commerce Int. Ukraina"
+    },
+    {
+      "code": "econt",
+      "name": "Econt"
+    },
+    {
+      "code": "ehandler",
+      "name": "eHandler"
+    },
+    {
+      "code": "emagbglogistic",
+      "name": "eMag.bg AWB"
+    },
+    {
+      "code": "emaghulogistic",
+      "name": "eMag.hu AWB"
+    },
+    {
+      "code": "emagrologistic",
+      "name": "eMag.ro AWB"
+    },
+    {
+      "code": "emx",
+      "name": "EMX"
+    },
+    {
+      "code": "emissary",
+      "name": "Emissary"
+    },
+    {
+      "code": "ekartlogisticsdirect",
+      "name": "Ekart Logistics (Direct)"
+    },
+    {
+      "code": "ekartelite",
+      "name": "Ekart e-lite"
+    },
+    {
+      "code": "enviacom",
+      "name": "Envia.com"
+    },
+    {
+      "code": "enviali",
+      "name": "Enviali"
+    },
+    {
+      "code": "enviame",
+      "name": "enviamé"
+    },
+    {
+      "code": "envio_nube",
+      "name": "Envío Nube"
+    },
+    {
+      "code": "envioclick",
+      "name": "Envíoclick"
+    },
+    {
+      "code": "epaka",
+      "name": "Epaka"
+    },
+    {
+      "code": "enviopackcl",
+      "name": "Envíopack - CL"
+    },
+    {
+      "code": "enviopackar",
+      "name": "Envíopack - AR"
+    },
+    {
+      "code": "enviopackmx",
+      "name": "Envíopack - MX"
+    },
+    {
+      "code": "epoca_shipping",
+      "name": "Época Cosméticos Shipping"
+    },
+    {
+      "code": "erlipro",
+      "name": "Erli"
+    },
+    {
+      "code": "esendeo",
+      "name": "Esendeo"
+    },
+    {
+      "code": "eship",
+      "name": "eShip"
+    },
+    {
+      "code": "eshipz",
+      "name": "eShipz"
+    },
+    {
+      "code": "eucatex_shipping",
+      "name": "Eucatex Shipping"
+    },
+    {
+      "code": "eurohermes",
+      "name": "EuroHermes"
+    },
+    {
+      "code": "evricorporate",
+      "name": "Evri Corporate"
+    },
+    {
+      "code": "expedipro",
+      "name": "Expedipro"
+    },
+    {
+      "code": "expresskurie",
+      "name": "Express"
+    },
+    {
+      "code": "express_one",
+      "name": "Express One"
+    },
+    {
+      "code": "ewaybill",
+      "name": "e-Waybill India"
+    },
+    {
+      "code": "fancourier",
+      "name": "FAN Courier"
+    },
+    {
+      "code": "farma_delivery",
+      "name": "Farma Delivery Shipping"
+    },
+    {
+      "code": "fashiondaysbgawb",
+      "name": "Fashion Days BG AWB"
+    },
+    {
+      "code": "fashiondaysroawb",
+      "name": "Fashion Days RO AWB"
+    },
+    {
+      "code": "fastbeetle",
+      "name": "FastBeetle"
+    },
+    {
+      "code": "fast_shop_shipping",
+      "name": "Fast Shop Shipping"
+    },
+    {
+      "code": "fancourier_international",
+      "name": "FAN Courier International"
+    },
+    {
+      "code": "fedex",
+      "name": "FedEx.com (deprecated)"
+    },
+    {
+      "code": "fedex_v2",
+      "name": "FedEx.com (new)"
+    },
+    {
+      "code": "fedexpl",
+      "name": "FedEx.pl"
+    },
+    {
+      "code": "firstcryshipping",
+      "name": "FirstCry Shipping"
+    },
+    {
+      "code": "flexport",
+      "name": "Flexport"
+    },
+    {
+      "code": "flipkartshipping",
+      "name": "Ekart Logistics (Flipkart)"
+    },
+    {
+      "code": "flixlog",
+      "name": "Lixlog (Flixlog)"
+    },
+    {
+      "code": "floripa_airport",
+      "name": "Floripa Airport Shipping"
+    },
+    {
+      "code": "fm_transportes",
+      "name": "FM Transportes"
+    },
+    {
+      "code": "fofr",
+      "name": "Fofr"
+    },
+    {
+      "code": "foxpost",
+      "name": "Foxpost"
+    },
+    {
+      "code": "franch_express",
+      "name": "Franch Express"
+    },
+    {
+      "code": "frenet",
+      "name": "Frenet"
+    },
+    {
+      "code": "freterapido",
+      "name": "Frete Rápido"
+    },
+    {
+      "code": "fulfillmentamazon",
+      "name": "Fulfillment Amazon"
+    },
+    {
+      "code": "fulfillmentbol",
+      "name": "Fulfilled by Bol"
+    },
+    {
+      "code": "fulfillmentcirro",
+      "name": "Fulfillment Cirro"
+    },
+    {
+      "code": "fulfillmentcubbo",
+      "name": "Fulfillment Cubbo"
+    },
+    {
+      "code": "fulfillmentdhl",
+      "name": "Fulfillment DHL"
+    },
+    {
+      "code": "fulfillmentebay",
+      "name": "eBay Fulfilment by Orange Connex"
+    },
+    {
+      "code": "fulfillmentgiga",
+      "name": "Fulfillment GIGA"
+    },
+    {
+      "code": "fulfillmenttiba",
+      "name": "Fulfillment Tiba"
+    },
+    {
+      "code": "fulfillmentmonta",
+      "name": "Fulfillment Monta"
+    },
+    {
+      "code": "fulfillmentshiphero",
+      "name": "Fulfillment ShipHero"
+    },
+    {
+      "code": "fulfillmentstokki",
+      "name": "Stokki"
+    },
+    {
+      "code": "fulfillmenttiktok",
+      "name": "Fulfilled by TikTok"
+    },
+    {
+      "code": "fulfillmentunlock",
+      "name": "Fulfillment Unlock"
+    },
+    {
+      "code": "fulfillmentzeos",
+      "name": "Fulfillment Zalando ZEOS"
+    },
+    {
+      "code": "fulfillmentshiprocket",
+      "name": "Shiprocket Fulfillment"
+    },
+    {
+      "code": "fulfillmentyuefeng",
+      "name": "Fulfillment Yuefeng"
+    },
+    {
+      "code": "furdeco",
+      "name": "Furdeco"
+    },
+    {
+      "code": "furgonetka",
+      "name": "Furgonetka"
+    },
+    {
+      "code": "fxcouriers",
+      "name": "FX Couriers"
+    },
+    {
+      "code": "geissk",
+      "name": "Geis SK"
+    },
+    {
+      "code": "geiscz",
+      "name": "Geis CZ"
+    },
+    {
+      "code": "geniki_taxydromiki",
+      "name": "Geniki Taxydromiki"
+    },
+    {
+      "code": "geodis",
+      "name": "Geodis"
+    },
+    {
+      "code": "globkurier",
+      "name": "GlobKurier"
+    },
+    {
+      "code": "gls",
+      "name": "GLS PL"
+    },
+    {
+      "code": "gls_be",
+      "name": "GLS BE"
+    },
+    {
+      "code": "glscz",
+      "name": "GLS CZ"
+    },
+    {
+      "code": "glsde",
+      "name": "GLS DE (deprecated)"
+    },
+    {
+      "code": "glsde_v2",
+      "name": "GLS DE v2"
+    },
+    {
+      "code": "glsfr",
+      "name": "GLS FR"
+    },
+    {
+      "code": "glshr",
+      "name": "GLS HR"
+    },
+    {
+      "code": "glshu",
+      "name": "GLS HU"
+    },
+    {
+      "code": "glsit",
+      "name": "GLS IT"
+    },
+    {
+      "code": "glspt",
+      "name": "GLS PT"
+    },
+    {
+      "code": "glsro",
+      "name": "GLS RO"
+    },
+    {
+      "code": "glssi",
+      "name": "GLS SI"
+    },
+    {
+      "code": "glssk",
+      "name": "GLS SK"
+    },
+    {
+      "code": "go4",
+      "name": "GO4"
+    },
+    {
+      "code": "gobalik",
+      "name": "GO balik CZ"
+    },
+    {
+      "code": "gobaliksk",
+      "name": "GO balik SK"
+    },
+    {
+      "code": "gofo",
+      "name": "GOFO"
+    },
+    {
+      "code": "goglobal24",
+      "name": "Global24"
+    },
+    {
+      "code": "grupo_soma_shipping",
+      "name": "Grupo Soma Shipping"
+    },
+    {
+      "code": "helpship",
+      "name": "HelpShip"
+    },
+    {
+      "code": "hellmann",
+      "name": "Hellmann PL"
+    },
+    {
+      "code": "heppner",
+      "name": "Heppner"
+    },
+    {
+      "code": "hermesuk",
+      "name": "Evri (Hermes UK)"
+    },
+    {
+      "code": "hermesde",
+      "name": "Hermes DE"
+    },
+    {
+      "code": "hermesde_hes",
+      "name": "Hermes Einrichtungs Service"
+    },
+    {
+      "code": "homepaczka",
+      "name": "HomePaczka"
+    },
+    {
+      "code": "poste_italiane",
+      "name": "Poste Italiane"
+    },
+    {
+      "code": "iaibroker",
+      "name": "IAI Broker"
+    },
+    {
+      "code": "imile",
+      "name": "iMile"
+    },
+    {
+      "code": "india_post",
+      "name": "India Post"
+    },
+    {
+      "code": "innoship",
+      "name": "Innoship"
+    },
+    {
+      "code": "inpostinternational",
+      "name": "InPost International"
+    },
+    {
+      "code": "inpostkurier",
+      "name": "InPost Kurier"
+    },
+    {
+      "code": "inpost_it",
+      "name": "InPost (IT)"
+    },
+    {
+      "code": "inpostuk",
+      "name": "InPost (UK)"
+    },
+    {
+      "code": "intelipost",
+      "name": "Intelipost"
+    },
+    {
+      "code": "internetmark",
+      "name": "InternetMarke"
+    },
+    {
+      "code": "invio_home",
+      "name": "Invio Home"
+    },
+    {
+      "code": "itd_global_connexx",
+      "name": "ITD Global Connexx"
+    },
+    {
+      "code": "ithinklogistics",
+      "name": "iThink Logistics"
+    },
+    {
+      "code": "izidrop",
+      "name": "Izidrop"
+    },
+    {
+      "code": "jadlog",
+      "name": "Jadlog"
+    },
+    {
+      "code": "jamef",
+      "name": "Jamef"
+    },
+    {
+      "code": "japo",
+      "name": "JAPO"
+    },
+    {
+      "code": "jasfbg",
+      "name": "JAS-FBG"
+    },
+    {
+      "code": "jiomart_shipping",
+      "name": "Jiomart Shipping"
+    },
+    {
+      "code": "jtexpress",
+      "name": "J&T Express"
+    },
+    {
+      "code": "joomlogistics",
+      "name": "Joom Logistics"
+    },
+    {
+      "code": "kabum_entregas",
+      "name": "Kabum Entregas"
+    },
+    {
+      "code": "kangu",
+      "name": "Kangu"
+    },
+    {
+      "code": "kex2",
+      "name": "Geis"
+    },
+    {
+      "code": "kuehne_nagel",
+      "name": "Kuehne+Nagel"
+    },
+    {
+      "code": "kurjerzy",
+      "name": "KurJerzy"
+    },
+    {
+      "code": "kwaishipping",
+      "name": "Kwai Shipping"
+    },
+    {
+      "code": "kwikship",
+      "name": "Kwikship (Gokwik)"
+    },
+    {
+      "code": "landmark",
+      "name": "Landmark"
+    },
+    {
+      "code": "lazada_shipping_sg",
+      "name": "Lazada Shipping Singapore"
+    },
+    {
+      "code": "lazada_shipping_my",
+      "name": "Lazada Shipping Malaysia"
+    },
+    {
+      "code": "lazada_shipping_id",
+      "name": "Lazada Shipping Indonesia"
+    },
+    {
+      "code": "lazada_shipping_vn",
+      "name": "Lazada Shipping Vietnam"
+    },
+    {
+      "code": "lazada_shipping_th",
+      "name": "Lazada Shipping Thailand"
+    },
+    {
+      "code": "lazada_shipping_ph",
+      "name": "Lazada Shipping Philippines"
+    },
+    {
+      "code": "lebiscuit_shipping",
+      "name": "Lebiscuit Shipping"
+    },
+    {
+      "code": "lettre_suivie",
+      "name": "Lettre Suivie"
+    },
+    {
+      "code": "lightdata",
+      "name": "LightData"
+    },
+    {
+      "code": "liverpoolmx_shipping",
+      "name": "Liverpool (MX)"
+    },
+    {
+      "code": "loganexpress",
+      "name": "Logan Express"
+    },
+    {
+      "code": "logistiko",
+      "name": "Logistiko"
+    },
+    {
+      "code": "loggi",
+      "name": "Loggi"
+    },
+    {
+      "code": "logmanager",
+      "name": "Log Manager"
+    },
+    {
+      "code": "lognow",
+      "name": "Shippix"
+    },
+    {
+      "code": "lotus_imall_shipping",
+      "name": "Lotus iMall Shipping"
+    },
+    {
+      "code": "lojas_mm_shipping",
+      "name": "Lojas MM Shipping"
+    },
+    {
+      "code": "magalog",
+      "name": "Magalog"
+    },
+    {
+      "code": "magalu_entregas",
+      "name": "Magalu Entregas"
+    },
+    {
+      "code": "magalu_entregas_oa",
+      "name": "Magalu (OpenAPI) Entregas"
+    },
+    {
+      "code": "magyar_post",
+      "name": "Magyar Post"
+    },
+    {
+      "code": "mais_correios",
+      "name": "Mais Correios Shipping"
+    },
+    {
+      "code": "malldelivery",
+      "name": "Mall Delivery"
+    },
+    {
+      "code": "mall_dpd",
+      "name": "Mall By DPD"
+    },
+    {
+      "code": "mandabem",
+      "name": "Manda Bem"
+    },
+    {
+      "code": "mandae",
+      "name": "Mandaê (formerly Nuvem Envio)"
+    },
+    {
+      "code": "marisol_shipping",
+      "name": "Marisol Shipping"
+    },
+    {
+      "code": "mateus_mais_shipping",
+      "name": "Mateus Mais Shipping"
+    },
+    {
+      "code": "meesho_shipping",
+      "name": "Meesho shipping"
+    },
+    {
+      "code": "meest",
+      "name": "Meest"
+    },
+    {
+      "code": "megatone_shipping",
+      "name": "Megatone Shipping"
+    },
+    {
+      "code": "melhorenvio",
+      "name": "Melhor Envio"
+    },
+    {
+      "code": "melibrcourier",
+      "name": "Mercado Envios - BR"
+    },
+    {
+      "code": "meliarcourier",
+      "name": "Mercado Envios - AR"
+    },
+    {
+      "code": "melicocourier",
+      "name": "Mercado Envios - CO"
+    },
+    {
+      "code": "meliclcourier",
+      "name": "Mercado Envios - CL"
+    },
+    {
+      "code": "melimxcourier",
+      "name": "Mercado Envios - MX"
+    },
+    {
+      "code": "melipecourier",
+      "name": "Mercado Envios - PE"
+    },
+    {
+      "code": "mintsoftcourier",
+      "name": "Mintsoft Fulfillment"
+    },
+    {
+      "code": "minutos99",
+      "name": "99Minutos"
+    },
+    {
+      "code": "mondialrelay",
+      "name": "Mondial Relay"
+    },
+    {
+      "code": "mrpacket",
+      "name": "MRPacket"
+    },
+    {
+      "code": "mrw",
+      "name": "MRW"
+    },
+    {
+      "code": "myntrashipping",
+      "name": "Myntra Shipping"
+    },
+    {
+      "code": "myparcel",
+      "name": "MyParcel"
+    },
+    {
+      "code": "myparcel_nl",
+      "name": "MyParcel NL"
+    },
+    {
+      "code": "na_terra_shipping",
+      "name": "Na Terra Shipping"
+    },
+    {
+      "code": "netshoesshipping",
+      "name": "Netshoes (Magalu Entregas)"
+    },
+    {
+      "code": "nettle_pharma",
+      "name": "Nettle Pharma"
+    },
+    {
+      "code": "neoship",
+      "name": "Neoship"
+    },
+    {
+      "code": "newegg_shipping",
+      "name": "Newegg Shipping"
+    },
+    {
+      "code": "next_shipping",
+      "name": "Next Shipping"
+    },
+    {
+      "code": "nimbuspost",
+      "name": "Nimbus Post"
+    },
+    {
+      "code": "nolimit",
+      "name": "NoLimit"
+    },
+    {
+      "code": "nowekolory",
+      "name": "Nowe Kolory"
+    },
+    {
+      "code": "novaposhtacourier",
+      "name": "Nova Post"
+    },
+    {
+      "code": "nykaashipping",
+      "name": "Nykaa"
+    },
+    {
+      "code": "oca",
+      "name": "OCA"
+    },
+    {
+      "code": "ocasa",
+      "name": "OCASA"
+    },
+    {
+      "code": "octopiacourier",
+      "name": "Octopia Fulfillment"
+    },
+    {
+      "code": "oex",
+      "name": "OEX"
+    },
+    {
+      "code": "oexfulfillment",
+      "name": "OEX Fulfillment"
+    },
+    {
+      "code": "okazii_shipping",
+      "name": "Okazii Shipping"
+    },
+    {
+      "code": "olistcourier",
+      "name": "Olist"
+    },
+    {
+      "code": "olzalogistic",
+      "name": "OlzaLogistic"
+    },
+    {
+      "code": "omniva",
+      "name": "Omniva"
+    },
+    {
+      "code": "one_by_allegro",
+      "name": "One by Allegro (New API 3.0)"
+    },
+    {
+      "code": "ontime",
+      "name": "Ontime"
+    },
+    {
+      "code": "orangeconnex",
+      "name": "Orange Connex"
+    },
+    {
+      "code": "oscar_shipping",
+      "name": "Oscar Calçados Shipping"
+    },
+    {
+      "code": "packeta",
+      "name": "Packeta"
+    },
+    {
+      "code": "paczkomaty",
+      "name": "InPost Paczkomaty"
+    },
+    {
+      "code": "pague_menos_shipping",
+      "name": "Pague Menos Shipping"
+    },
+    {
+      "code": "paketo24",
+      "name": "Paketo24"
+    },
+    {
+      "code": "parcel2go",
+      "name": "Parcel2Go"
+    },
+    {
+      "code": "parcelhub",
+      "name": "ParcelHub"
+    },
+    {
+      "code": "parcelx",
+      "name": "ParcelX"
+    },
+    {
+      "code": "parflex",
+      "name": "Parflex"
+    },
+    {
+      "code": "patron",
+      "name": "Patron Service"
+    },
+    {
+      "code": "patronbroker",
+      "name": "Patron Service Broker"
+    },
+    {
+      "code": "pegazkurier",
+      "name": "Pegaz Kurier"
+    },
+    {
+      "code": "pekaes",
+      "name": "Geodis (Pekaes)"
+    },
+    {
+      "code": "petite_jolie",
+      "name": "Petite Jolie Shipping"
+    },
+    {
+      "code": "pickit",
+      "name": "Pickit"
+    },
+    {
+      "code": "pickpack",
+      "name": "PickPack"
+    },
+    {
+      "code": "pigucourier",
+      "name": "Pigu"
+    },
+    {
+      "code": "pikndel",
+      "name": "Pikndel"
+    },
+    {
+      "code": "pitstop_shipping",
+      "name": "PitStop Shipping"
+    },
+    {
+      "code": "pocztapolska",
+      "name": "Poczta Polska"
+    },
+    {
+      "code": "polishop_shipping",
+      "name": "Polishop Shipping"
+    },
+    {
+      "code": "polkurier",
+      "name": "Polkurier"
+    },
+    {
+      "code": "postabezhranic",
+      "name": "Posta bez hranic"
+    },
+    {
+      "code": "postaja",
+      "name": "Posta já"
+    },
+    {
+      "code": "post_at",
+      "name": "Austrian Post"
+    },
+    {
+      "code": "postis",
+      "name": "Postis"
+    },
+    {
+      "code": "postnord",
+      "name": "PostNord"
+    },
+    {
+      "code": "ppl",
+      "name": "PPL"
+    },
+    {
+      "code": "privalia_shipping",
+      "name": "Privalia Shipping"
+    },
+    {
+      "code": "professionalcourier",
+      "name": "Professional Courier"
+    },
+    {
+      "code": "psslogistic",
+      "name": "PSS Logistics"
+    },
+    {
+      "code": "purolator",
+      "name": "Purolator"
+    },
+    {
+      "code": "qlink",
+      "name": "Qlink"
+    },
+    {
+      "code": "qogita_shipping",
+      "name": "Qogita Shipping"
+    },
+    {
+      "code": "raben",
+      "name": "Raben"
+    },
+    {
+      "code": "ramarim_shipping",
+      "name": "Ramarim Shipping"
+    },
+    {
+      "code": "rapidshyp",
+      "name": "Rapidshyp"
+    },
+    {
+      "code": "rapilog",
+      "name": "Rapilog"
+    },
+    {
+      "code": "refurbed_shipping",
+      "name": "Refurbed Shipping"
+    },
+    {
+      "code": "rehbar_post",
+      "name": "Rehbar Post"
+    },
+    {
+      "code": "relais_colis",
+      "name": "Relais Colis"
+    },
+    {
+      "code": "rhenusfreight",
+      "name": "Rhenus Freight"
+    },
+    {
+      "code": "riachueloshipping",
+      "name": "Riachuelo Shipping"
+    },
+    {
+      "code": "rihappy_shipping",
+      "name": "RiHappy Shipping"
+    },
+    {
+      "code": "rohligsuus",
+      "name": "Rohlig SUUS"
+    },
+    {
+      "code": "romaniaexpress",
+      "name": "Crosswin Courier & More (Romania Express)"
+    },
+    {
+      "code": "royalmail",
+      "name": "Royal Mail API"
+    },
+    {
+      "code": "royalmail_cnd",
+      "name": "Royal Mail Click&Drop"
+    },
+    {
+      "code": "ruch",
+      "name": "ORLEN Paczka"
+    },
+    {
+      "code": "sameday",
+      "name": "Sameday.ro"
+    },
+    {
+      "code": "samedaybg",
+      "name": "Sameday.bg"
+    },
+    {
+      "code": "samedayhu",
+      "name": "Sameday.hu"
+    },
+    {
+      "code": "scurri",
+      "name": "Scurri"
+    },
+    {
+      "code": "sendcloud",
+      "name": "Sendcloud"
+    },
+    {
+      "code": "selloship",
+      "name": "Selloship"
+    },
+    {
+      "code": "sgpweb",
+      "name": "SGPWeb"
+    },
+    {
+      "code": "shadowfax",
+      "name": "Shadowfax"
+    },
+    {
+      "code": "sheinshipping",
+      "name": "Shein Shipping"
+    },
+    {
+      "code": "shipbobcourier",
+      "name": "ShipBob Fulfillment"
+    },
+    {
+      "code": "shipdelight",
+      "name": "ShipDelight"
+    },
+    {
+      "code": "shipfast",
+      "name": "Velocity shipping"
+    },
+    {
+      "code": "shipglobal",
+      "name": "ShipGlobal"
+    },
+    {
+      "code": "shiprocket",
+      "name": "Shiprocket"
+    },
+    {
+      "code": "shiprocket_cargo",
+      "name": "Shiprocket Cargo"
+    },
+    {
+      "code": "shipnow",
+      "name": "Shipnow"
+    },
+    {
+      "code": "shippypro",
+      "name": "ShippyPro"
+    },
+    {
+      "code": "shipstation",
+      "name": "ShipStation"
+    },
+    {
+      "code": "shipstation_v2",
+      "name": "ShipStation v2"
+    },
+    {
+      "code": "shiptheory",
+      "name": "Shiptheory"
+    },
+    {
+      "code": "shipyaari",
+      "name": "Shipyaari"
+    },
+    {
+      "code": "shipway",
+      "name": "Shipway"
+    },
+    {
+      "code": "shop_club_shipping",
+      "name": "Shop Club Shipping"
+    },
+    {
+      "code": "shopeelogistic",
+      "name": "Shopee"
+    },
+    {
+      "code": "shophub_shipping",
+      "name": "ShopHub Shipping"
+    },
+    {
+      "code": "sicoob_shipping",
+      "name": "Sicoob / Coopera Shipping"
+    },
+    {
+      "code": "sicredi_shipping",
+      "name": "Sicredi Shipping"
+    },
+    {
+      "code": "skladusa",
+      "name": "SkladUSA"
+    },
+    {
+      "code": "slovenskaposta",
+      "name": "Slovenska Posta"
+    },
+    {
+      "code": "smartenvios",
+      "name": "SmartEnvios"
+    },
+    {
+      "code": "snapdealshipping",
+      "name": "Snapdeal Shipping"
+    },
+    {
+      "code": "skroutz_last_mile",
+      "name": "Skroutz Last Mile"
+    },
+    {
+      "code": "skroutz_shipping",
+      "name": "Skroutz shipping"
+    },
+    {
+      "code": "skydropx",
+      "name": "Skydropx"
+    },
+    {
+      "code": "skroutz_shipping_v2",
+      "name": "Skroutz shipping v2"
+    },
+    {
+      "code": "south_post",
+      "name": "South Post"
+    },
+    {
+      "code": "speedex",
+      "name": "Speedex"
+    },
+    {
+      "code": "spediamo_pro",
+      "name": "SpediamoPro"
+    },
+    {
+      "code": "sportisimo_shipping",
+      "name": "Sportisimo shipping"
+    },
+    {
+      "code": "sps",
+      "name": "Slovak Parcel Service"
+    },
+    {
+      "code": "spring",
+      "name": "Spring"
+    },
+    {
+      "code": "sprzedajemy_shipping",
+      "name": "Sprzedajemy shipping"
+    },
+    {
+      "code": "stone_entrega",
+      "name": "Stone Entrega"
+    },
+    {
+      "code": "superfrete",
+      "name": "SuperFrete"
+    },
+    {
+      "code": "swiatprzesyl",
+      "name": "SP Express"
+    },
+    {
+      "code": "t1envios",
+      "name": "T1 Envios"
+    },
+    {
+      "code": "tatacliqshipping",
+      "name": "Tata CLiQ Shipping"
+    },
+    {
+      "code": "swiss_post",
+      "name": "Swiss Post"
+    },
+    {
+      "code": "takemore",
+      "name": "TakeMore.net shipping"
+    },
+    {
+      "code": "taniejnb",
+      "name": "TanieNadawanie.pl"
+    },
+    {
+      "code": "taxydema",
+      "name": "Taxydema"
+    },
+    {
+      "code": "tcero",
+      "name": "TCE RO"
+    },
+    {
+      "code": "temu_shipping",
+      "name": "Temu Shipping"
+    },
+    {
+      "code": "tiktokshipping",
+      "name": "TikTok Shipping"
+    },
+    {
+      "code": "tiny_shipping",
+      "name": "Tiny Shipping"
+    },
+    {
+      "code": "tnt",
+      "name": "TNT"
+    },
+    {
+      "code": "totalexpress",
+      "name": "Total Express"
+    },
+    {
+      "code": "totalplay_shipping",
+      "name": "Totalplay Shipping"
+    },
+    {
+      "code": "tracken",
+      "name": "TRACKen"
+    },
+    {
+      "code": "trendyol_shipping",
+      "name": "Trendyol Shipping"
+    },
+    {
+      "code": "turbopaka",
+      "name": "turbopaka.pl"
+    },
+    {
+      "code": "uber_direct",
+      "name": "Uber Direct"
+    },
+    {
+      "code": "upost",
+      "name": "U Post"
+    },
+    {
+      "code": "ups",
+      "name": "UPS"
+    },
+    {
+      "code": "usps",
+      "name": "USPS"
+    },
+    {
+      "code": "veezuu",
+      "name": "VeeZuu"
+    },
+    {
+      "code": "ventureshop_shipping",
+      "name": "VentureShop Shipping"
+    },
+    {
+      "code": "vertem_shipping",
+      "name": "Vertem Shipping"
+    },
+    {
+      "code": "vik_shipping",
+      "name": "Vik Shipping"
+    },
+    {
+      "code": "walmartship",
+      "name": "Ship with Walmart"
+    },
+    {
+      "code": "walmartship_mx",
+      "name": "Ship with Walmart (MX)"
+    },
+    {
+      "code": "walmartmcs",
+      "name": "Walmart MCS"
+    },
+    {
+      "code": "wareiq",
+      "name": "WareIQ"
+    },
+    {
+      "code": "warning",
+      "name": "Warning"
+    },
+    {
+      "code": "wayfairshipping",
+      "name": "Wayfair Shipping"
+    },
+    {
+      "code": "wedo",
+      "name": "WeDo.cz (deprecated)"
+    },
+    {
+      "code": "wedo_v2",
+      "name": "One by Allegro (API 2.0 deprecated)"
+    },
+    {
+      "code": "whistl",
+      "name": "Whistl"
+    },
+    {
+      "code": "wing",
+      "name": "Wing"
+    },
+    {
+      "code": "woot",
+      "name": "Woot"
+    },
+    {
+      "code": "wygodne_zwroty",
+      "name": "Wygodne Zwroty"
+    },
+    {
+      "code": "xdp",
+      "name": "XDP"
+    },
+    {
+      "code": "xpcourier",
+      "name": "XP Courier"
+    },
+    {
+      "code": "xpressbees",
+      "name": "XpressBees"
+    },
+    {
+      "code": "xpressdelivery",
+      "name": "Xpress Delivery"
+    },
+    {
+      "code": "yodel",
+      "name": "Yodel"
+    },
+    {
+      "code": "yunexpress",
+      "name": "YunExpress"
+    },
+    {
+      "code": "zalandoss",
+      "name": "Zalando Shipping"
+    },
+    {
+      "code": "zasilkovna",
+      "name": "Zasilkovna"
+    },
+    {
+      "code": "zema_shipping",
+      "name": "Zema Shipping"
+    },
+    {
+      "code": "zipnova_ar",
+      "name": "Zipnova (formerly Zippin) - AR"
+    },
+    {
+      "code": "zipnova_cl",
+      "name": "Zipnova (formerly Zippin) - CL"
+    },
+    {
+      "code": "zippin",
+      "name": "Zipnova (formerly Zippin) - MX"
+    },
+    {
+      "code": "zlapkuriera",
+      "name": "WysylajNami.pl"
+    },
+    {
+      "code": "zonos",
+      "name": "Zonos"
+    },
+    {
+      "code": "qikink_fulfilment",
+      "name": "Qikink Fulfilment"
+    },
+    {
+      "code": "other",
+      "name": "Inne"
+    }
+  ]
+}

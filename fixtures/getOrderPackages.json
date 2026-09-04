@@ -1,0 +1,19 @@
+{
+  "status": "SUCCESS",
+  "packages": [
+    {
+      "package_id": "39482265",
+      "courier_package_nr": "SEED1788556531848",
+      "courier_inner_number": "",
+      "courier_code": "other",
+      "courier_other_name": "inpost",
+      "account_id": "",
+      "tracking_status_date": "0",
+      "tracking_delivery_days": "0",
+      "tracking_status": "0",
+      "package_type": "0",
+      "tracking_url": "https://inpost.pl/sledzenie-przesylek?number=SEED1788556531848",
+      "is_return": false
+    }
+  ]
+}

@@ -1,0 +1,8 @@
+node_modules
+dist
+.medusa
+*.tgz
+.env
+.env.local
+fixtures/raw
+ROADMAP.md
