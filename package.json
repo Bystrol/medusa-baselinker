@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "description": "Base.com (formerly BaseLinker) integration for MedusaJS v2 - catalog and stock sync, order export, status and tracking sync back",
   "license": "MIT",
-  "author": "Micha\u0142 Bystryk (https://digity.studio/)",
+  "author": "Michał Bystryk (https://digity.studio/)",
   "homepage": "https://digity.studio/",
   "repository": {
     "type": "git",
@@ -57,6 +57,7 @@
     "@types/react": "^18.3.28",
     "react": "18.3.1",
     "react-dom": "18.3.1",
+    "ts-node": "^10.9.2",
     "tsx": "^4.19.2",
     "typescript": "^5.6.2",
     "vite": "^5.2.11"
