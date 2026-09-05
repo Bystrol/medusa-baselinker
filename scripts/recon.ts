@@ -304,7 +304,7 @@ const writeReport = () => {
       (p) => Object.keys(p.variants ?? {}).length > 0
     ).length;
     lines.push(
-      "### Variants (u11d issue #2)",
+      "### Variants",
       "",
       `Products in sample: ${products.length}`,
       `- with variants: ${withVariants}`,

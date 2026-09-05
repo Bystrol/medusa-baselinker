@@ -2,7 +2,7 @@
  * Seeds a Base.com account with test products.
  *
  * The catalog below is not arbitrary: every entry targets a specific edge case
- * that the mapping layer has to survive, including the ones the u11d plugin
+ * that the mapping layer has to survive, including the ones a naive import
  * gets wrong. Seeding by hand would almost certainly miss them.
  *
  * Usage:
@@ -78,7 +78,7 @@ const SEED_PRODUCTS: SeedProduct[] = [
   {
     key: "simple-no-variants",
     covers:
-      "Product with no variants at all - u11d issue #2, where it silently ends up with zero variants in Medusa",
+      "Product with no variants at all - a naive import silently gives it zero variants in Medusa",
     build: (ctx) => ({
       sku: "SEED-SIMPLE-001",
       ean: "5901234123457",

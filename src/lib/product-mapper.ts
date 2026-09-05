@@ -189,7 +189,7 @@ const uniqueOptionValue = (value: string, taken: Set<string>): string => {
 
 /**
  * Builds the single variant Medusa requires for a product Base holds without
- * any. The u11d plugin skips these products instead, which is issue #2.
+ * any. Skipping them instead leaves the product in Medusa unbuyable.
  */
 const synthesizeVariant = (
   baseProductId: string,

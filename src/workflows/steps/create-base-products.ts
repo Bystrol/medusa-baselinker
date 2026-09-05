@@ -123,8 +123,8 @@ export const createBaseProductsStep = createStep(
  * Picks the sales channel new products are linked to.
  *
  * Falls back to the default channel with a warning rather than silently taking
- * whichever channel the database returns first, which is what the u11d plugin
- * does and which is a coin flip on a store with more than one.
+ * whichever channel the database returns first, which is a coin flip on a
+ * store with more than one.
  */
 const resolveSalesChannel = async (
   container: any,

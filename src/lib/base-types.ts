@@ -1,8 +1,8 @@
 /**
  * Base.com API shapes, transcribed from responses recorded in fixtures/.
  *
- * These differ from the types shipped by the u11d plugin in several places
- * where the documentation and the live API disagree - see the notes inline.
+ * The published documentation and the live API disagree in several places;
+ * these follow the API - see the notes inline.
  *
  * Numeric fields are typed as `unknown` wherever the API has been observed to
  * switch between number and string. Read them through src/lib/coerce.ts.
@@ -110,8 +110,8 @@ export interface BaseProduct {
 /**
  * An entry from getInventoryProductsList.
  *
- * The id field is `id`, not `product_id` as the u11d types declare, and the
- * list contains parent products only.
+ * The id field is `id`, not `product_id` as the rest of the API would suggest,
+ * and the list contains parent products only.
  */
 export interface BaseProductListItem {
   id: number;

@@ -16,10 +16,10 @@ export interface FetchBaseCatalogOutput {
 /**
  * Reads the whole Base catalog and maps it into Medusa's shape.
  *
- * Read-only, so there is nothing to compensate. The batching matters: the u11d
- * plugin fans the entire catalog out through Promise.all, which on any real
- * store blows through the hundred-requests-per-minute limit and hammers the
- * database at the same time.
+ * Read-only, so there is nothing to compensate. The batching matters: fanning
+ * the whole catalog out through Promise.all blows through the
+ * hundred-requests-per-minute limit on any real store and hammers the database
+ * at the same time.
  */
 export const fetchBaseCatalogStep = createStep(
   "fetch-base-catalog",

@@ -2,9 +2,8 @@
  * Handle generation for products imported from Base.
  *
  * Medusa enforces a unique handle, and Base happily holds several products
- * under one name, so slugifying the title alone is not enough - the u11d
- * plugin does exactly that and the second product of a matching pair fails
- * to insert.
+ * under one name, so slugifying the title alone is not enough: the second
+ * product of a matching pair fails to insert.
  */
 
 /** Characters that survive Unicode decomposition and need an explicit mapping. */

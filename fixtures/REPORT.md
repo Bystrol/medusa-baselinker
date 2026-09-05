@@ -22,7 +22,7 @@ The sample below settles whether Base returns the same:
 }
 ```
 
-### Variants (u11d issue #2)
+### Variants
 
 Products in sample: 9
 - with variants: 1

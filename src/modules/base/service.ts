@@ -25,8 +25,8 @@ export interface BaseModuleOptions {
   /** Order source shown in Base for orders coming from Medusa. */
   custom_source_id?: number;
   /**
-   * Sales channel new products are linked to. The u11d plugin takes whichever
-   * channel comes back first, which is a coin flip on a multi-channel store.
+   * Sales channel new products are linked to. Taking whichever channel comes
+   * back first is a coin flip on a store with more than one.
    */
   sales_channel_id?: string;
   /** Shipping profile assigned to imported products, for the same reason. */
