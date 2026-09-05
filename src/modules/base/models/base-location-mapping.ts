@@ -8,7 +8,7 @@ import { model } from "@medusajs/framework/utils";
  */
 export const BaseLocationMapping = model.define("base_location_mapping", {
   id: model.id().primaryKey(),
-  base_warehouse_id: model.text().unique().index(),
+  base_warehouse_id: model.text().unique(),
   medusa_location_id: model.text().index(),
   name: model.text(),
 });

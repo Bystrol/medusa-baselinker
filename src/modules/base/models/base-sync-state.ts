@@ -9,6 +9,6 @@ import { model } from "@medusajs/framework/utils";
  */
 export const BaseSyncState = model.define("base_sync_state", {
   id: model.id().primaryKey(),
-  key: model.text().unique().index(),
+  key: model.text().unique(),
   value: model.text().nullable(),
 });

@@ -12,7 +12,7 @@ import { model } from "@medusajs/framework/utils";
  */
 export const BaseOrderMapping = model.define("base_order_mapping", {
   id: model.id().primaryKey(),
-  medusa_order_id: model.text().unique().index(),
+  medusa_order_id: model.text().unique(),
   base_order_id: model.text().index().nullable(),
   /** Base status id last seen, so only real changes are acted on. */
   base_status_id: model.text().nullable(),

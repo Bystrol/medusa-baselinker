@@ -13,9 +13,9 @@ import { model } from "@medusajs/framework/utils";
  */
 export const BaseVariantMapping = model.define("base_variant_mapping", {
   id: model.id().primaryKey(),
-  base_variant_id: model.text().unique().index(),
+  base_variant_id: model.text().unique(),
   base_product_id: model.text().index(),
-  medusa_variant_id: model.text().unique().index(),
+  medusa_variant_id: model.text().unique(),
   sku: model.text().nullable(),
   ean: model.text().nullable(),
   /** True when Base has no variants and this one was synthesized on import. */
