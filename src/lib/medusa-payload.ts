@@ -12,19 +12,43 @@ export interface PayloadContext {
   shippingProfileId?: string;
 }
 
-export const toVariantPayload = (variant: MappedVariant, optionTitle: string) => ({
+/**
+ * Fields shared by both directions. `options` is deliberately absent: it is
+ * required when creating a variant and destructive when updating one.
+ */
+const variantFields = (variant: MappedVariant) => ({
   title: variant.title,
   sku: variant.sku ?? undefined,
   ean: variant.ean ?? undefined,
   // Base owns the stock, so Medusa has to track it rather than treat the
   // variant as always available.
   manage_inventory: true,
-  options: { [optionTitle]: variant.option_value },
   prices: variant.prices.map((price) => ({
     amount: price.amount,
     currency_code: price.currency_code,
   })),
 });
+
+export const toVariantCreatePayload = (
+  variant: MappedVariant,
+  optionTitle: string
+) => ({
+  ...variantFields(variant),
+  options: { [optionTitle]: variant.option_value },
+});
+
+/**
+ * Update payload, without `options`.
+ *
+ * Passing options to updateProductVariantsWorkflow does not re-link the
+ * variant - it rebuilds the option's value list, which deletes the values
+ * every variant of the product is pointing at and fails the run with
+ * "Option value ... does not exist for option ...". The link does not need
+ * updating anyway: it is established at creation and the value only changes
+ * if the variant is renamed upstream.
+ */
+export const toVariantUpdatePayload = (variant: MappedVariant) =>
+  variantFields(variant);
 
 export const toProductPayload = (
   product: MappedProduct,
@@ -49,7 +73,7 @@ export const toProductPayload = (
     },
   ],
   variants: product.variants.map((variant) =>
-    toVariantPayload(variant, product.option_title)
+    toVariantCreatePayload(variant, product.option_title)
   ),
   ...(context.salesChannelId
     ? { sales_channels: [{ id: context.salesChannelId }] }

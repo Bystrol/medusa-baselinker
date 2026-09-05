@@ -2,7 +2,7 @@ import assert from "node:assert/strict";
 import { test, describe } from "node:test";
 import { readFileSync } from "node:fs";
 import { join } from "node:path";
-import { toProductPayload, toVariantPayload } from "../medusa-payload";
+import { toProductPayload, toVariantCreatePayload } from "../medusa-payload";
 import { mapBaseProduct, type PriceGroup } from "../product-mapper";
 import type { BaseProduct } from "../base-types";
 
@@ -90,17 +90,17 @@ describe("toProductPayload", () => {
   });
 });
 
-describe("toVariantPayload", () => {
+describe("toVariantCreatePayload", () => {
   test("manages inventory, since Base owns the stock", () => {
     const mapped = mapOne("SEED-SIMPLE-001");
-    const payload = toVariantPayload(mapped.variants[0], mapped.option_title);
+    const payload = toVariantCreatePayload(mapped.variants[0], mapped.option_title);
 
     assert.equal(payload.manage_inventory, true);
   });
 
   test("passes prices through unscaled", () => {
     const mapped = mapOne("SEED-SIMPLE-001");
-    const payload = toVariantPayload(mapped.variants[0], mapped.option_title);
+    const payload = toVariantCreatePayload(mapped.variants[0], mapped.option_title);
     const pln = payload.prices.find((p) => p.currency_code === "pln");
 
     assert.equal(pln?.amount, 49.99);
@@ -108,7 +108,7 @@ describe("toVariantPayload", () => {
 
   test("turns a missing ean into undefined rather than an empty string", () => {
     const mapped = mapOne("SEED-WAREHOUSE-001");
-    const payload = toVariantPayload(mapped.variants[0], mapped.option_title);
+    const payload = toVariantCreatePayload(mapped.variants[0], mapped.option_title);
 
     assert.equal(payload.ean, undefined);
   });
