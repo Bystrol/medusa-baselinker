@@ -33,6 +33,17 @@ export interface BaseModuleOptions {
   shipping_profile_id?: string;
   /** Base allows 100 requests per minute; lower it to leave room for other clients. */
   requests_per_minute?: number;
+  /**
+   * What to do with a product Medusa has mapped that Base stopped returning.
+   * Defaults to "draft", which removes it from sale while staying reversible.
+   */
+  missing_product_strategy?: "draft" | "delete" | "ignore";
+  /**
+   * Largest share of mapped products one sync may withdraw before it refuses
+   * to act. Absence is inferred from a paginated listing, so a failed page
+   * looks identical to a mass withdrawal. Defaults to 0.2.
+   */
+  max_missing_ratio?: number;
 }
 
 type InjectedDependencies = {

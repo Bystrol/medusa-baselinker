@@ -38,6 +38,12 @@ export interface MappedVariant {
   /** Available quantity per Base warehouse key ("bl_153201"). */
   stock: Record<string, number>;
   /**
+   * Value of the product's single option. Medusa refuses to create a product
+   * without options, and Base has no equivalent concept, so one is derived
+   * from the variant name. Unique within the product.
+   */
+  option_value: string;
+  /**
    * True when Base had no variants and this one was built from the product.
    * Worth keeping: it tells the sync that the variant has no Base identity of
    * its own, so a variant appearing later must replace rather than duplicate it.
@@ -57,6 +63,13 @@ export interface MappedProduct {
   images: string[];
   thumbnail: string | null;
   /**
+   * Title of the single option carrying the variant values.
+   *
+   * createProductsWorkflow throws outright for a product with no options -
+   * "Product options are not provided for: [...]" - so this is not optional.
+   */
+  option_title: string;
+  /**
    * Always at least one variant. Note there is deliberately no product-level
    * stock: for a product with variants, Base reports the parent's stock as the
    * sum of its variants, so carrying both would double count.
@@ -72,7 +85,11 @@ export interface MapProductOptions {
    * collision free; Base allows several products to share a name.
    */
   takenHandles?: Set<string>;
+  /** Title of the generated product option. Defaults to "Variant". */
+  optionTitle?: string;
 }
+
+export const DEFAULT_OPTION_TITLE = "Variant";
 
 /** Available stock is what Base holds minus what it has already reserved. */
 const availableStock = (
@@ -132,19 +149,43 @@ const mapVariant = (
   baseVariantId: string,
   variant: BaseVariant,
   baseProductId: string,
-  priceGroups: PriceGroup[]
-): MappedVariant => ({
-  base_variant_id: baseVariantId,
-  base_product_id: baseProductId,
-  title: toText(variant.name) || baseVariantId,
-  sku: toTextOrNull(variant.sku),
-  ean: toTextOrNull(variant.ean),
-  prices: mapPrices(variant.prices, priceGroups),
-  // Base exposes reservations on the parent only, so variant stock is taken
-  // at face value. Erring toward the lower number is not an option here.
-  stock: availableStock(variant.stock),
-  is_synthetic: false,
-});
+  priceGroups: PriceGroup[],
+  optionValues: Set<string>
+): MappedVariant => {
+  const title = toText(variant.name) || baseVariantId;
+
+  return {
+    base_variant_id: baseVariantId,
+    base_product_id: baseProductId,
+    title,
+    sku: toTextOrNull(variant.sku),
+    ean: toTextOrNull(variant.ean),
+    prices: mapPrices(variant.prices, priceGroups),
+    // Base exposes reservations on the parent only, so variant stock is taken
+    // at face value. Erring toward the lower number is not an option here.
+    stock: availableStock(variant.stock),
+    option_value: uniqueOptionValue(title, optionValues),
+    is_synthetic: false,
+  };
+};
+
+/**
+ * Two variants of one product may share a name in Base, but Medusa needs the
+ * option values to differ, so duplicates get a numeric suffix.
+ */
+const uniqueOptionValue = (value: string, taken: Set<string>): string => {
+  if (!taken.has(value)) {
+    taken.add(value);
+    return value;
+  }
+
+  let suffix = 2;
+  while (taken.has(`${value} ${suffix}`)) suffix++;
+
+  const unique = `${value} ${suffix}`;
+  taken.add(unique);
+  return unique;
+};
 
 /**
  * Builds the single variant Medusa requires for a product Base holds without
@@ -162,6 +203,7 @@ const synthesizeVariant = (
   ean: toTextOrNull(product.ean),
   prices: mapPrices(product.prices, priceGroups),
   stock: availableStock(product.stock, product.reservations),
+  option_value: "Default",
   is_synthetic: true,
 });
 
@@ -182,9 +224,10 @@ export const mapBaseProduct = (
   const images = mapImages(product.images);
 
   const variantEntries = Object.entries(product.variants ?? {});
+  const optionValues = new Set<string>();
   const variants = variantEntries.length
     ? variantEntries.map(([variantId, variant]) =>
-        mapVariant(variantId, variant, baseProductId, priceGroups)
+        mapVariant(variantId, variant, baseProductId, priceGroups, optionValues)
       )
     : [synthesizeVariant(baseProductId, product, priceGroups)];
 
@@ -199,6 +242,7 @@ export const mapBaseProduct = (
     length: toPositiveOrNull(product.length),
     images,
     thumbnail: images[0] ?? null,
+    option_title: options.optionTitle ?? DEFAULT_OPTION_TITLE,
     variants,
   };
 };

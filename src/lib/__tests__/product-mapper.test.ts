@@ -176,6 +176,61 @@ describe("mapBaseProduct", () => {
   });
 });
 
+describe("product options", () => {
+  test("always emits an option title", () => {
+    // createProductsWorkflow throws for a product without options, so this
+    // cannot be left empty for any product Base sends.
+    const mapped = mapBaseProducts(productsData, { priceGroups });
+
+    assert.ok(mapped.every((p) => p.option_title === "Variant"));
+  });
+
+  test("gives the synthesized variant the Default option value", () => {
+    const mapped = mapOne("SEED-SIMPLE-001");
+
+    assert.equal(mapped.variants[0].option_value, "Default");
+  });
+
+  test("derives option values from variant names", () => {
+    const mapped = mapOne("SEED-VARIANT-001");
+    const values = mapped.variants.map((v) => v.option_value).sort();
+
+    assert.deepEqual(values, [
+      "Seed Variant Product - Size L",
+      "Seed Variant Product - Size S",
+    ]);
+  });
+
+  test("suffixes option values when two variants share a name", () => {
+    const [id, product] = bySku("SEED-VARIANT-001");
+    const variants = Object.entries(product.variants ?? {});
+    const collided = {
+      ...product,
+      variants: Object.fromEntries(
+        variants.map(([variantId, variant]) => [
+          variantId,
+          { ...variant, name: "Same name" },
+        ])
+      ),
+    } as BaseProduct;
+
+    const mapped = mapBaseProduct(id, collided, { priceGroups });
+    const values = mapped.variants.map((v) => v.option_value);
+
+    assert.deepEqual(values, ["Same name", "Same name 2"]);
+  });
+
+  test("honours a custom option title", () => {
+    const [id, product] = bySku("SEED-SIMPLE-001");
+    const mapped = mapBaseProduct(id, product, {
+      priceGroups,
+      optionTitle: "Wariant",
+    });
+
+    assert.equal(mapped.option_title, "Wariant");
+  });
+});
+
 describe("mapBaseProducts", () => {
   test("gives colliding titles distinct handles", () => {
     const mapped = mapBaseProducts(productsData, { priceGroups });
