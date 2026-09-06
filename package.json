@@ -7,7 +7,7 @@
   "homepage": "https://digity.studio/",
   "repository": {
     "type": "git",
-    "url": "https://github.com/michalbystryk/medusa-baselinker.git"
+    "url": "https://github.com/Bystrol/medusa-baselinker.git"
   },
   "keywords": [
     "medusa",
@@ -71,5 +71,8 @@
   },
   "engines": {
     "node": ">=20"
+  },
+  "bugs": {
+    "url": "https://github.com/Bystrol/medusa-baselinker/issues"
   }
 }
