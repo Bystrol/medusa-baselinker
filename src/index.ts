@@ -8,6 +8,8 @@ export * from "./lib/variant-options";
 export * from "./lib/stock-mapper";
 export * from "./lib/missing-products";
 export * from "./lib/medusa-payload";
+export * from "./lib/order-mapper";
 
 export { syncBaseCatalogWorkflow } from "./workflows/sync-base-catalog";
 export { syncBaseStockWorkflow } from "./workflows/sync-base-stock";
+export { exportBaseOrderWorkflow } from "./workflows/export-base-order";

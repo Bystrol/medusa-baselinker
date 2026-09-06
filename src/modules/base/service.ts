@@ -70,6 +70,8 @@ class BaseModuleService extends MedusaService({
   private readonly logger_: Logger;
   /** Resolved lazily: the default inventory is only known after an API call. */
   private inventoryId_?: string;
+  /** Resolved lazily, and cached: status ids are account specific. */
+  private orderStatusId_?: number;
 
   constructor({ logger }: InjectedDependencies, options: BaseModuleOptions) {
     super(...arguments);
@@ -193,9 +195,36 @@ class BaseModuleService extends MedusaService({
     return (response.products ?? {}) as Record<string, BaseProductStock>;
   }
 
+  /**
+   * Status assigned to exported orders.
+   *
+   * Base rejects addOrder without one, and the ids are specific to each
+   * account, so there is no sensible constant to fall back on. Rather than
+   * failing every export until someone configures it, the account's first
+   * status is used and named in a warning - a store's first status is almost
+   * always the one new orders belong in.
+   */
+  async getOrderStatusId(): Promise<number | undefined> {
+    if (this.options_.order_status_id) return this.options_.order_status_id;
+    if (this.orderStatusId_) return this.orderStatusId_;
+
+    const response = await this.client_.call("getOrderStatusList");
+    const statuses = (response.statuses ?? []) as { id: unknown; name: string }[];
+    const first = statuses[0];
+
+    if (!first) return undefined;
+
+    this.orderStatusId_ = Number(first.id);
+    this.logger_.warn(
+      `Base.com: order_status_id is not configured - exporting orders as "${first.name}" (${this.orderStatusId_}). ` +
+        "Set order_status_id to choose deliberately."
+    );
+
+    return this.orderStatusId_;
+  }
+
   async addOrder(payload: Record<string, unknown>): Promise<string> {
     const response = await this.client_.call("addOrder", {
-      order_status_id: this.options_.order_status_id,
       custom_source_id: this.options_.custom_source_id,
       ...payload,
     });

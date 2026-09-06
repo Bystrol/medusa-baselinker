@@ -826,7 +826,7 @@ const seedOrder = async (client: BaseClient) => {
 
   console.log("\nOrder recorded in fixtures/raw/seed-state.json.");
   console.log(
-    "Note: Base has no API for deleting orders - cancel it in the panel if you want it gone."
+    "Note: the API cannot delete orders. Remove or cancel it in the panel if you want it gone."
   );
   console.log("\nNext: npm run recon");
 };
@@ -870,7 +870,7 @@ const cleanup = async (client: BaseClient) => {
 
   if (state.orders?.length) {
     console.log(
-      `\nNote: ${state.orders.length} seeded order(s) remain - Base has no API for deleting orders.`
+      `\nNote: ${state.orders.length} seeded order(s) remain - the API cannot delete orders, only the panel can.`
     );
     console.log(
       `  order ids: ${state.orders.map((o) => o.order_id).join(", ")}`
