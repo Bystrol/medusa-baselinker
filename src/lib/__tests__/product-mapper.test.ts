@@ -182,18 +182,19 @@ describe("product options", () => {
     // cannot be left empty for any product Base sends.
     const mapped = mapBaseProducts(productsData, { priceGroups });
 
-    assert.ok(mapped.every((p) => p.option_title === "Variant"));
+    assert.ok(mapped.every((p) => p.options.length >= 1));
+    assert.ok(mapped.every((p) => p.options[0].values.length >= 1));
   });
 
   test("gives the synthesized variant the Default option value", () => {
     const mapped = mapOne("SEED-SIMPLE-001");
 
-    assert.equal(mapped.variants[0].option_value, "Default");
+    assert.deepEqual(mapped.variants[0].option_values, { Variant: "Default" });
   });
 
   test("derives option values from variant names", () => {
     const mapped = mapOne("SEED-VARIANT-001");
-    const values = mapped.variants.map((v) => v.option_value).sort();
+    const values = mapped.variants.map((v) => v.option_values["Variant"]).sort();
 
     assert.deepEqual(values, [
       "Seed Variant Product - Size L",
@@ -215,19 +216,74 @@ describe("product options", () => {
     } as BaseProduct;
 
     const mapped = mapBaseProduct(id, collided, { priceGroups });
-    const values = mapped.variants.map((v) => v.option_value);
+    const values = mapped.variants.map((v) => v.option_values["Variant"]);
 
     assert.deepEqual(values, ["Same name", "Same name 2"]);
   });
 
-  test("honours a custom option title", () => {
-    const [id, product] = bySku("SEED-SIMPLE-001");
-    const mapped = mapBaseProduct(id, product, {
-      priceGroups,
-      optionTitle: "Wariant",
-    });
+  test("falls back to a generated option when variants carry no features", () => {
+    const mapped = mapOne("SEED-VARIANT-001");
 
-    assert.equal(mapped.option_title, "Wariant");
+    assert.equal(mapped.options_from_features, false);
+    assert.deepEqual(
+      mapped.options.map((option) => option.title),
+      ["Variant"]
+    );
+  });
+});
+
+describe("options derived from Base features", () => {
+  const variantFeatures = Object.fromEntries(
+    Object.entries(
+      fixture("getInventoryProductsData_variants").products as Record<
+        string,
+        { text_fields?: { features?: unknown } }
+      >
+    ).map(([id, variant]) => [
+      id,
+      (variant.text_fields?.features ?? null) as Record<string, unknown> | null,
+    ])
+  );
+
+  const mapWithFeatures = (sku: string) => {
+    const [id, product] = bySku(sku);
+    return mapBaseProduct(id, product, { priceGroups, variantFeatures });
+  };
+
+  test("builds one option per feature key", () => {
+    const mapped = mapWithFeatures("SEED-FEATURES-001");
+
+    assert.equal(mapped.options_from_features, true);
+    assert.deepEqual(
+      mapped.options.map((option) => option.title),
+      ["Kolor", "Rozmiar"]
+    );
+    assert.deepEqual(
+      mapped.options.find((option) => option.title === "Kolor")?.values.sort(),
+      ["Czerwony", "Niebieski"]
+    );
+  });
+
+  test("gives each variant a value on every axis", () => {
+    const mapped = mapWithFeatures("SEED-FEATURES-001");
+
+    for (const variant of mapped.variants) {
+      assert.deepEqual(
+        Object.keys(variant.option_values).sort(),
+        ["Kolor", "Rozmiar"]
+      );
+    }
+  });
+
+  test("falls back to one generated axis when features disagree", () => {
+    const mapped = mapWithFeatures("SEED-MIXED-001");
+
+    assert.equal(mapped.options_from_features, false);
+    assert.deepEqual(
+      mapped.options.map((option) => option.title),
+      ["Variant"]
+    );
+    assert.equal(mapped.options[0].values.length, 2);
   });
 });
 

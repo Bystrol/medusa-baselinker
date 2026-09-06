@@ -141,6 +141,91 @@ const SEED_PRODUCTS: SeedProduct[] = [
     ],
   },
   {
+    key: "featured-variants",
+    covers:
+      "Variants carrying structured features - the only way Base expresses real options like colour and size",
+    build: (ctx) => ({
+      sku: "SEED-FEATURES-001",
+      tax_rate: 23,
+      text_fields: {
+        name: "Seed Featured Variants",
+        description: "Variants described by matching feature keys.",
+      },
+      prices: allPrices(ctx, 120),
+      stock: defaultStock(ctx, 0),
+    }),
+    children: (ctx) => [
+      {
+        key: "featured-variants/red-l",
+        payload: {
+          sku: "SEED-FEATURES-001-RL",
+          tax_rate: 23,
+          text_fields: {
+            name: "Czerwony / L",
+            // Features must be sent as an object; an array of pairs is
+            // accepted by the API and then silently discarded.
+            features: { Kolor: "Czerwony", Rozmiar: "L" },
+          },
+          prices: allPrices(ctx, 120),
+          stock: defaultStock(ctx, 4),
+        },
+      },
+      {
+        key: "featured-variants/blue-m",
+        payload: {
+          sku: "SEED-FEATURES-001-BM",
+          tax_rate: 23,
+          text_fields: {
+            name: "Niebieski / M",
+            features: { Kolor: "Niebieski", Rozmiar: "M" },
+          },
+          prices: allPrices(ctx, 130),
+          stock: defaultStock(ctx, 6),
+        },
+      },
+    ],
+  },
+  {
+    key: "mixed-features",
+    covers:
+      "Variants whose feature keys disagree - must fall back to a single generated option rather than produce a broken axis",
+    build: (ctx) => ({
+      sku: "SEED-MIXED-001",
+      tax_rate: 23,
+      text_fields: {
+        name: "Seed Mixed Features",
+        description: "One variant has features, the other does not.",
+      },
+      prices: allPrices(ctx, 60),
+      stock: defaultStock(ctx, 0),
+    }),
+    children: (ctx) => [
+      {
+        key: "mixed-features/with",
+        payload: {
+          sku: "SEED-MIXED-001-A",
+          tax_rate: 23,
+          text_fields: {
+            name: "Wariant z cechami",
+            features: { Kolor: "Zielony" },
+          },
+          prices: allPrices(ctx, 60),
+          stock: defaultStock(ctx, 2),
+        },
+      },
+      {
+        key: "mixed-features/without",
+        payload: {
+          sku: "SEED-MIXED-001-B",
+          tax_rate: 23,
+          text_fields: { name: "Wariant bez cech" },
+          prices: allPrices(ctx, 65),
+          stock: defaultStock(ctx, 1),
+        },
+      },
+    ],
+  },
+  {
     key: "decimal-price",
     covers:
       "Awkward decimal price - settles whether Base returns 12.34 or 1234, which decides if a conversion to Medusa is needed",

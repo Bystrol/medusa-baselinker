@@ -191,12 +191,29 @@ const main = async () => {
     });
 
     // Full data is fetched for a sample only - we are after the shape, not volume.
-    const productIds = Object.keys(list?.products ?? {}).slice(0, 10);
+    const productIds = Object.keys(list?.products ?? {}).slice(0, 20);
+    let productsData: any | undefined;
     if (productIds.length) {
-      await probe("getInventoryProductsData", "getInventoryProductsData", {
-        ...params,
-        products: productIds.map((id) => Number(id)),
-      });
+      productsData = await probe(
+        "getInventoryProductsData",
+        "getInventoryProductsData",
+        { ...params, products: productIds.map((id) => Number(id)) }
+      );
+    }
+
+    // Variants are products in their own right, and their `features` - the
+    // only structured attributes Base holds - are visible only when fetched
+    // that way. Nested under the parent they are absent entirely.
+    const variantIds = Object.values(
+      (productsData?.products ?? {}) as Record<string, any>
+    ).flatMap((product) => Object.keys(product.variants ?? {}));
+
+    if (variantIds.length) {
+      await probe(
+        "getInventoryProductsData_variants",
+        "getInventoryProductsData",
+        { ...params, products: variantIds.map((id) => Number(id)) }
+      );
     }
   }
 

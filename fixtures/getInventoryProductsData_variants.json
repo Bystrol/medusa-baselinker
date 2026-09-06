@@ -1,0 +1,314 @@
+{
+  "status": "SUCCESS",
+  "products": {
+    "683543731": {
+      "is_bundle": false,
+      "ean": "5901234123471",
+      "asin": "",
+      "parent_id": 683543727,
+      "sku": "SEED-VARIANT-001-S",
+      "tags": [],
+      "tax_rate": 23,
+      "weight": 0,
+      "height": 0,
+      "width": 0,
+      "length": 0,
+      "star": 0,
+      "category_id": 0,
+      "manufacturer_id": 0,
+      "text_fields": {
+        "name": "Seed Variant Product - Size S",
+        "description": "A product split into two variants."
+      },
+      "stock": {
+        "bl_153201": 10,
+        "bl_153210": 0
+      },
+      "reservations": {
+        "bl_153201": 0,
+        "bl_153210": 0
+      },
+      "thresholds": {
+        "bl_153201": 0,
+        "bl_153210": 0
+      },
+      "incoming": {
+        "bl_153201": 0,
+        "bl_153210": 0
+      },
+      "prices": {
+        "100823": 79,
+        "100830": 79
+      },
+      "locations": {
+        "bl_153201": "",
+        "bl_153210": ""
+      },
+      "links": {},
+      "average_cost": 0,
+      "average_landed_cost": 0,
+      "images": {
+        "1": "https://picsum.photos/seed/variant/600/600"
+      },
+      "videos": {}
+    },
+    "683543736": {
+      "is_bundle": false,
+      "ean": "5901234123488",
+      "asin": "",
+      "parent_id": 683543727,
+      "sku": "SEED-VARIANT-001-L",
+      "tags": [],
+      "tax_rate": 23,
+      "weight": 0,
+      "height": 0,
+      "width": 0,
+      "length": 0,
+      "star": 0,
+      "category_id": 0,
+      "manufacturer_id": 0,
+      "text_fields": {
+        "name": "Seed Variant Product - Size L",
+        "description": "A product split into two variants."
+      },
+      "stock": {
+        "bl_153201": 3,
+        "bl_153210": 0
+      },
+      "reservations": {
+        "bl_153201": 0,
+        "bl_153210": 0
+      },
+      "thresholds": {
+        "bl_153201": 0,
+        "bl_153210": 0
+      },
+      "incoming": {
+        "bl_153201": 0,
+        "bl_153210": 0
+      },
+      "prices": {
+        "100823": 89,
+        "100830": 89
+      },
+      "locations": {
+        "bl_153201": "",
+        "bl_153210": ""
+      },
+      "links": {},
+      "average_cost": 0,
+      "average_landed_cost": 0,
+      "images": {
+        "1": "https://picsum.photos/seed/variant/600/600"
+      },
+      "videos": {}
+    },
+    "683543752": {
+      "is_bundle": false,
+      "ean": "",
+      "asin": "",
+      "parent_id": 683543744,
+      "sku": "SEED-FEATURES-001-RL",
+      "tags": [],
+      "tax_rate": 23,
+      "weight": 0,
+      "height": 0,
+      "width": 0,
+      "length": 0,
+      "star": 0,
+      "category_id": 0,
+      "manufacturer_id": 0,
+      "text_fields": {
+        "name": "Czerwony / L",
+        "description": "Variants described by matching feature keys.",
+        "features": {
+          "Kolor": "Czerwony",
+          "Rozmiar": "L"
+        }
+      },
+      "stock": {
+        "bl_153201": 4,
+        "bl_153210": 0
+      },
+      "reservations": {
+        "bl_153201": 0,
+        "bl_153210": 0
+      },
+      "thresholds": {
+        "bl_153201": 0,
+        "bl_153210": 0
+      },
+      "incoming": {
+        "bl_153201": 0,
+        "bl_153210": 0
+      },
+      "prices": {
+        "100823": 120,
+        "100830": 120
+      },
+      "locations": {
+        "bl_153201": "",
+        "bl_153210": ""
+      },
+      "links": {},
+      "average_cost": 0,
+      "average_landed_cost": 0,
+      "images": {},
+      "videos": {}
+    },
+    "683543758": {
+      "is_bundle": false,
+      "ean": "",
+      "asin": "",
+      "parent_id": 683543744,
+      "sku": "SEED-FEATURES-001-BM",
+      "tags": [],
+      "tax_rate": 23,
+      "weight": 0,
+      "height": 0,
+      "width": 0,
+      "length": 0,
+      "star": 0,
+      "category_id": 0,
+      "manufacturer_id": 0,
+      "text_fields": {
+        "name": "Niebieski / M",
+        "description": "Variants described by matching feature keys.",
+        "features": {
+          "Kolor": "Niebieski",
+          "Rozmiar": "M"
+        }
+      },
+      "stock": {
+        "bl_153201": 6,
+        "bl_153210": 0
+      },
+      "reservations": {
+        "bl_153201": 0,
+        "bl_153210": 0
+      },
+      "thresholds": {
+        "bl_153201": 0,
+        "bl_153210": 0
+      },
+      "incoming": {
+        "bl_153201": 0,
+        "bl_153210": 0
+      },
+      "prices": {
+        "100823": 130,
+        "100830": 130
+      },
+      "locations": {
+        "bl_153201": "",
+        "bl_153210": ""
+      },
+      "links": {},
+      "average_cost": 0,
+      "average_landed_cost": 0,
+      "images": {},
+      "videos": {}
+    },
+    "683543770": {
+      "is_bundle": false,
+      "ean": "",
+      "asin": "",
+      "parent_id": 683543767,
+      "sku": "SEED-MIXED-001-A",
+      "tags": [],
+      "tax_rate": 23,
+      "weight": 0,
+      "height": 0,
+      "width": 0,
+      "length": 0,
+      "star": 0,
+      "category_id": 0,
+      "manufacturer_id": 0,
+      "text_fields": {
+        "name": "Wariant z cechami",
+        "description": "One variant has features, the other does not.",
+        "features": {
+          "Kolor": "Zielony"
+        }
+      },
+      "stock": {
+        "bl_153201": 2,
+        "bl_153210": 0
+      },
+      "reservations": {
+        "bl_153201": 0,
+        "bl_153210": 0
+      },
+      "thresholds": {
+        "bl_153201": 0,
+        "bl_153210": 0
+      },
+      "incoming": {
+        "bl_153201": 0,
+        "bl_153210": 0
+      },
+      "prices": {
+        "100823": 60,
+        "100830": 60
+      },
+      "locations": {
+        "bl_153201": "",
+        "bl_153210": ""
+      },
+      "links": {},
+      "average_cost": 0,
+      "average_landed_cost": 0,
+      "images": {},
+      "videos": {}
+    },
+    "683543775": {
+      "is_bundle": false,
+      "ean": "",
+      "asin": "",
+      "parent_id": 683543767,
+      "sku": "SEED-MIXED-001-B",
+      "tags": [],
+      "tax_rate": 23,
+      "weight": 0,
+      "height": 0,
+      "width": 0,
+      "length": 0,
+      "star": 0,
+      "category_id": 0,
+      "manufacturer_id": 0,
+      "text_fields": {
+        "name": "Wariant bez cech",
+        "description": "One variant has features, the other does not."
+      },
+      "stock": {
+        "bl_153201": 1,
+        "bl_153210": 0
+      },
+      "reservations": {
+        "bl_153201": 0,
+        "bl_153210": 0
+      },
+      "thresholds": {
+        "bl_153201": 0,
+        "bl_153210": 0
+      },
+      "incoming": {
+        "bl_153201": 0,
+        "bl_153210": 0
+      },
+      "prices": {
+        "100823": 65,
+        "100830": 65
+      },
+      "locations": {
+        "bl_153201": "",
+        "bl_153210": ""
+      },
+      "links": {},
+      "average_cost": 0,
+      "average_landed_cost": 0,
+      "images": {},
+      "videos": {}
+    }
+  }
+}

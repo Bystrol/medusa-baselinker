@@ -47,6 +47,26 @@ export const fetchBaseCatalogStep = createStep(
       Object.assign(raw, await baseService.getProductsData(batch));
     }
 
+    // Features - the only structured attributes Base holds - are absent from
+    // the variants nested under a parent. A variant is a product in its own
+    // right, so they are fetched again by their own ids; without this the
+    // catalog can only ever have a single generated option.
+    const variantIds = Object.values(raw).flatMap((product: any) =>
+      Object.keys(product.variants ?? {})
+    );
+
+    const variantFeatures: Record<string, Record<string, unknown> | null> = {};
+    for (let index = 0; index < variantIds.length; index += BATCH_SIZE) {
+      const batch = variantIds.slice(index, index + BATCH_SIZE);
+      const details = await baseService.getProductsData(batch);
+
+      for (const [variantId, detail] of Object.entries(details)) {
+        variantFeatures[variantId] =
+          ((detail as any).text_fields?.features as Record<string, unknown>) ??
+          null;
+      }
+    }
+
     // Handles have to avoid colliding with products Medusa already holds, but
     // not with the ones this sync is about to update - otherwise every run
     // would push a product's own handle one suffix further.
@@ -59,13 +79,21 @@ export const fetchBaseCatalogStep = createStep(
         .filter((handle: string) => !ownHandles.has(handle))
     );
 
-    const products = mapBaseProducts(raw, { priceGroups, takenHandles });
+    const products = mapBaseProducts(raw, {
+      priceGroups,
+      takenHandles,
+      variantFeatures,
+    });
+
+    const withRealOptions = products.filter(
+      (product) => product.options_from_features
+    ).length;
 
     logger.info(
       `Base.com: mapped ${products.length} products with ${products.reduce(
         (sum, product) => sum + product.variants.length,
         0
-      )} variants`
+      )} variants; ${withRealOptions} use options derived from Base features`
     );
 
     return new StepResponse<FetchBaseCatalogOutput>({

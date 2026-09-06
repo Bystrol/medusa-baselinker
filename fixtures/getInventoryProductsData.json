@@ -1,7 +1,7 @@
 {
   "status": "SUCCESS",
   "products": {
-    "682782169": {
+    "683543721": {
       "is_bundle": false,
       "ean": "5901234123457",
       "asin": "",
@@ -21,7 +21,7 @@
         "description": "A plain product with no variants."
       },
       "stock": {
-        "bl_153201": 23,
+        "bl_153201": 25,
         "bl_153210": 0
       },
       "reservations": {
@@ -52,7 +52,7 @@
       },
       "videos": {}
     },
-    "682782170": {
+    "683543727": {
       "is_bundle": false,
       "ean": "5901234123464",
       "asin": "",
@@ -72,7 +72,7 @@
         "description": "A product split into two variants."
       },
       "stock": {
-        "bl_153201": 12,
+        "bl_153201": 13,
         "bl_153210": 0
       },
       "reservations": {
@@ -99,7 +99,7 @@
       "average_cost": 0,
       "average_landed_cost": 0,
       "variants": {
-        "682782171": {
+        "683543731": {
           "name": "Seed Variant Product - Size S",
           "ean": "5901234123471",
           "asin": "",
@@ -117,13 +117,13 @@
             "100830": 79
           }
         },
-        "682782172": {
+        "683543736": {
           "name": "Seed Variant Product - Size L",
           "ean": "5901234123488",
           "asin": "",
           "sku": "SEED-VARIANT-001-L",
           "stock": {
-            "bl_153201": 2,
+            "bl_153201": 3,
             "bl_153210": 0
           },
           "locations": {
@@ -141,7 +141,181 @@
       },
       "videos": {}
     },
-    "682782173": {
+    "683543744": {
+      "is_bundle": false,
+      "ean": "",
+      "asin": "",
+      "parent_id": 0,
+      "sku": "SEED-FEATURES-001",
+      "tags": [],
+      "tax_rate": 23,
+      "weight": 0,
+      "height": 0,
+      "width": 0,
+      "length": 0,
+      "star": 0,
+      "category_id": 0,
+      "manufacturer_id": 0,
+      "text_fields": {
+        "name": "Seed Featured Variants",
+        "description": "Variants described by matching feature keys."
+      },
+      "stock": {
+        "bl_153201": 10,
+        "bl_153210": 0
+      },
+      "reservations": {
+        "bl_153201": 0,
+        "bl_153210": 0
+      },
+      "thresholds": {
+        "bl_153201": 0,
+        "bl_153210": 0
+      },
+      "incoming": {
+        "bl_153201": 0,
+        "bl_153210": 0
+      },
+      "prices": {
+        "100823": 120,
+        "100830": 120
+      },
+      "locations": {
+        "bl_153201": "",
+        "bl_153210": ""
+      },
+      "links": {},
+      "average_cost": 0,
+      "average_landed_cost": 0,
+      "variants": {
+        "683543752": {
+          "name": "Czerwony / L",
+          "ean": "",
+          "asin": "",
+          "sku": "SEED-FEATURES-001-RL",
+          "stock": {
+            "bl_153201": 4,
+            "bl_153210": 0
+          },
+          "locations": {
+            "bl_153201": "",
+            "bl_153210": ""
+          },
+          "prices": {
+            "100823": 120,
+            "100830": 120
+          }
+        },
+        "683543758": {
+          "name": "Niebieski / M",
+          "ean": "",
+          "asin": "",
+          "sku": "SEED-FEATURES-001-BM",
+          "stock": {
+            "bl_153201": 6,
+            "bl_153210": 0
+          },
+          "locations": {
+            "bl_153201": "",
+            "bl_153210": ""
+          },
+          "prices": {
+            "100823": "130.00",
+            "100830": "130.00"
+          }
+        }
+      },
+      "images": {},
+      "videos": {}
+    },
+    "683543767": {
+      "is_bundle": false,
+      "ean": "",
+      "asin": "",
+      "parent_id": 0,
+      "sku": "SEED-MIXED-001",
+      "tags": [],
+      "tax_rate": 23,
+      "weight": 0,
+      "height": 0,
+      "width": 0,
+      "length": 0,
+      "star": 0,
+      "category_id": 0,
+      "manufacturer_id": 0,
+      "text_fields": {
+        "name": "Seed Mixed Features",
+        "description": "One variant has features, the other does not."
+      },
+      "stock": {
+        "bl_153201": 3,
+        "bl_153210": 0
+      },
+      "reservations": {
+        "bl_153201": 0,
+        "bl_153210": 0
+      },
+      "thresholds": {
+        "bl_153201": 0,
+        "bl_153210": 0
+      },
+      "incoming": {
+        "bl_153201": 0,
+        "bl_153210": 0
+      },
+      "prices": {
+        "100823": 60,
+        "100830": 60
+      },
+      "locations": {
+        "bl_153201": "",
+        "bl_153210": ""
+      },
+      "links": {},
+      "average_cost": 0,
+      "average_landed_cost": 0,
+      "variants": {
+        "683543770": {
+          "name": "Wariant z cechami",
+          "ean": "",
+          "asin": "",
+          "sku": "SEED-MIXED-001-A",
+          "stock": {
+            "bl_153201": 2,
+            "bl_153210": 0
+          },
+          "locations": {
+            "bl_153201": "",
+            "bl_153210": ""
+          },
+          "prices": {
+            "100823": 60,
+            "100830": 60
+          }
+        },
+        "683543775": {
+          "name": "Wariant bez cech",
+          "ean": "",
+          "asin": "",
+          "sku": "SEED-MIXED-001-B",
+          "stock": {
+            "bl_153201": 1,
+            "bl_153210": 0
+          },
+          "locations": {
+            "bl_153201": "",
+            "bl_153210": ""
+          },
+          "prices": {
+            "100823": "65.00",
+            "100830": "65.00"
+          }
+        }
+      },
+      "images": {},
+      "videos": {}
+    },
+    "683543779": {
       "is_bundle": false,
       "ean": "",
       "asin": "",
@@ -190,7 +364,7 @@
       "images": {},
       "videos": {}
     },
-    "682782174": {
+    "683543784": {
       "is_bundle": false,
       "ean": "",
       "asin": "",
@@ -238,7 +412,7 @@
       "images": {},
       "videos": {}
     },
-    "682782175": {
+    "683543786": {
       "is_bundle": false,
       "ean": "",
       "asin": "",
@@ -287,7 +461,7 @@
       "images": {},
       "videos": {}
     },
-    "682782176": {
+    "683543791": {
       "is_bundle": false,
       "ean": "",
       "asin": "",
@@ -336,7 +510,7 @@
       "images": {},
       "videos": {}
     },
-    "682782177": {
+    "683543796": {
       "is_bundle": false,
       "ean": "",
       "asin": "",
@@ -385,7 +559,7 @@
       "images": {},
       "videos": {}
     },
-    "682782178": {
+    "683543802": {
       "is_bundle": false,
       "ean": "",
       "asin": "",
@@ -434,7 +608,7 @@
       "images": {},
       "videos": {}
     },
-    "682782179": {
+    "683543807": {
       "is_bundle": false,
       "ean": "",
       "asin": "",

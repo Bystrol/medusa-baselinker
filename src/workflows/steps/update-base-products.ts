@@ -61,10 +61,12 @@ export const updateBaseProductsStep = createStep(
       options?: { id: string; title: string; values?: { value: string }[] }[];
     };
 
-    const optionByProduct = new Map(
+    // Keyed by title: a product can have several options once its variants
+    // are described by features rather than by a single generated axis.
+    const optionsByProduct = new Map(
       (existing as ExistingProduct[]).map((product) => [
         product.id,
-        product.options?.[0],
+        new Map((product.options ?? []).map((option) => [option.title, option])),
       ])
     );
 
@@ -87,25 +89,28 @@ export const updateBaseProductsStep = createStep(
     // Add option values for variants that appeared in Base since the last run.
     const optionsNeedingValues = products.flatMap(
       ({ product, medusaProductId }) => {
-        const option = optionByProduct.get(medusaProductId);
-        if (!option) return [];
+        const options = optionsByProduct.get(medusaProductId);
+        if (!options) return [];
 
-        const current = new Set(
-          (option.values ?? []).map((entry) => entry.value)
-        );
-        const missing = product.variants
-          .map((variant) => variant.option_value)
-          .filter((value) => !current.has(value));
+        return product.options.flatMap((mapped) => {
+          const option = options.get(mapped.title);
+          if (!option) return [];
 
-        if (!missing.length) return [];
+          const current = new Set(
+            (option.values ?? []).map((entry) => entry.value)
+          );
+          const missing = mapped.values.filter((value) => !current.has(value));
 
-        return [
-          {
-            id: option.id,
-            title: option.title,
-            values: [...current, ...missing],
-          },
-        ];
+          if (!missing.length) return [];
+
+          return [
+            {
+              id: option.id,
+              title: option.title,
+              values: [...current, ...missing],
+            },
+          ];
+        });
       }
     );
 
@@ -149,9 +154,9 @@ export const updateBaseProductsStep = createStep(
       const { result } = await createProductVariantsWorkflow(container).run({
         input: {
           product_variants: toCreate.map(
-            ({ variant, product, medusaProductId }) => ({
+            ({ variant, medusaProductId }) => ({
               product_id: medusaProductId,
-              ...toVariantCreatePayload(variant, product.option_title),
+              ...toVariantCreatePayload(variant),
             })
           ),
         },

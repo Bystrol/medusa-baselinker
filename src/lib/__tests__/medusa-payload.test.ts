@@ -46,7 +46,7 @@ describe("toProductPayload", () => {
 
     assert.equal(payload.options[0].values.length, 2);
     assert.deepEqual(
-      payload.options[0].values.sort(),
+      [...payload.options[0].values].sort(),
       payload.variants.map((v) => v.options["Variant"]).sort()
     );
   });
@@ -93,14 +93,14 @@ describe("toProductPayload", () => {
 describe("toVariantCreatePayload", () => {
   test("manages inventory, since Base owns the stock", () => {
     const mapped = mapOne("SEED-SIMPLE-001");
-    const payload = toVariantCreatePayload(mapped.variants[0], mapped.option_title);
+    const payload = toVariantCreatePayload(mapped.variants[0]);
 
     assert.equal(payload.manage_inventory, true);
   });
 
   test("passes prices through unscaled", () => {
     const mapped = mapOne("SEED-SIMPLE-001");
-    const payload = toVariantCreatePayload(mapped.variants[0], mapped.option_title);
+    const payload = toVariantCreatePayload(mapped.variants[0]);
     const pln = payload.prices.find((p) => p.currency_code === "pln");
 
     assert.equal(pln?.amount, 49.99);
@@ -108,7 +108,7 @@ describe("toVariantCreatePayload", () => {
 
   test("turns a missing ean into undefined rather than an empty string", () => {
     const mapped = mapOne("SEED-WAREHOUSE-001");
-    const payload = toVariantCreatePayload(mapped.variants[0], mapped.option_title);
+    const payload = toVariantCreatePayload(mapped.variants[0]);
 
     assert.equal(payload.ean, undefined);
   });

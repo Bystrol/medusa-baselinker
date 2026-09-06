@@ -29,12 +29,10 @@ const variantFields = (variant: MappedVariant) => ({
   })),
 });
 
-export const toVariantCreatePayload = (
-  variant: MappedVariant,
-  optionTitle: string
-) => ({
+export const toVariantCreatePayload = (variant: MappedVariant) => ({
   ...variantFields(variant),
-  options: { [optionTitle]: variant.option_value },
+  // One value per product option, keyed by option title.
+  options: variant.option_values,
 });
 
 /**
@@ -66,15 +64,8 @@ export const toProductPayload = (
   images: product.images.map((url) => ({ url })),
   thumbnail: product.thumbnail ?? undefined,
   // Medusa refuses to create a product without options.
-  options: [
-    {
-      title: product.option_title,
-      values: product.variants.map((variant) => variant.option_value),
-    },
-  ],
-  variants: product.variants.map((variant) =>
-    toVariantCreatePayload(variant, product.option_title)
-  ),
+  options: product.options,
+  variants: product.variants.map(toVariantCreatePayload),
   ...(context.salesChannelId
     ? { sales_channels: [{ id: context.salesChannelId }] }
     : {}),

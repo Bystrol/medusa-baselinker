@@ -5,37 +5,66 @@ import { join } from "node:path";
 import { mapStockResponse, totalQuantity } from "../stock-mapper";
 import type { BaseProductStock } from "../base-types";
 
-const stockResponse = JSON.parse(
-  readFileSync(
-    join(__dirname, "..", "..", "..", "fixtures", "getInventoryProductsStock.json"),
-    "utf8"
-  )
-).products as Record<string, BaseProductStock>;
+const fixture = (name: string) =>
+  JSON.parse(
+    readFileSync(join(__dirname, "..", "..", "..", "fixtures", `${name}.json`), "utf8")
+  );
+
+const stockResponse = fixture("getInventoryProductsStock").products as Record<
+  string,
+  BaseProductStock
+>;
+
+const productsData = fixture("getInventoryProductsData").products as Record<
+  string,
+  { sku: string; variants?: Record<string, unknown> }
+>;
+
+/**
+ * Ids change every time the account is re-seeded, so tests address products by
+ * sku instead of pinning the numbers they happened to get.
+ */
+const idOf = (sku: string): string => {
+  const entry = Object.entries(productsData).find(
+    ([, product]) => product.sku === sku
+  );
+  if (!entry) throw new Error(`fixture is missing a product with sku ${sku}`);
+  return entry[0];
+};
+
+const variantIdsOf = (sku: string): string[] =>
+  Object.keys(productsData[idOf(sku)].variants ?? {});
 
 describe("mapStockResponse", () => {
   test("emits variants instead of their parent", () => {
     const mapped = mapStockResponse(stockResponse);
 
-    // 682782170 holds two variants and must not appear in its own right:
+    const parent = idOf("SEED-VARIANT-001");
+    const [first, second] = variantIdsOf("SEED-VARIANT-001");
+
+    // The parent holds two variants and must not appear in its own right:
     // Base reports a parent's stock as the sum of its variants.
-    assert.equal(mapped["682782170"], undefined);
-    assert.deepEqual(mapped["682782171"], { bl_153201: 10, bl_153210: 0 });
-    assert.deepEqual(mapped["682782172"], { bl_153201: 2, bl_153210: 0 });
+    assert.equal(mapped[parent], undefined);
+    assert.deepEqual(mapped[first], { bl_153201: 10, bl_153210: 0 });
+    assert.deepEqual(mapped[second], { bl_153201: 3, bl_153210: 0 });
   });
 
   test("emits a product without variants under its own id", () => {
     const mapped = mapStockResponse(stockResponse);
 
-    // Seeded with 25, then two were ordered. Base decremented the stock itself
-    // rather than recording a reservation, even though the inventory has
-    // reservations enabled - so the figure read back is already 23.
-    assert.deepEqual(mapped["682782169"], { bl_153201: 23, bl_153210: 0 });
+    assert.deepEqual(mapped[idOf("SEED-SIMPLE-001")], {
+      bl_153201: 25,
+      bl_153210: 0,
+    });
   });
 
   test("keeps quantities per warehouse", () => {
     const mapped = mapStockResponse(stockResponse);
 
-    assert.deepEqual(mapped["682782178"], { bl_153201: 12, bl_153210: 8 });
+    assert.deepEqual(mapped[idOf("SEED-WAREHOUSE-001")], {
+      bl_153201: 12,
+      bl_153210: 8,
+    });
   });
 
   test("subtracts reservations from a product without variants", () => {
@@ -97,8 +126,15 @@ describe("mapStockResponse", () => {
 
   test("covers every product in the fixture", () => {
     const mapped = mapStockResponse(stockResponse);
-    // Nine products, one of which contributes two variants instead of itself.
-    assert.equal(Object.keys(mapped).length, 10);
+
+    // Every product contributes one entry, except those with variants, which
+    // contribute one per variant and none for themselves.
+    const expected = Object.values(productsData).reduce((sum, product) => {
+      const variants = Object.keys(product.variants ?? {}).length;
+      return sum + (variants || 1);
+    }, 0);
+
+    assert.equal(Object.keys(mapped).length, expected);
   });
 });
 

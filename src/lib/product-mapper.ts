@@ -14,6 +14,11 @@ import {
   toPositiveOrNull,
 } from "./coerce";
 import { toHandle, uniqueHandle } from "./slug";
+import {
+  resolveVariantOptions,
+  FALLBACK_OPTION_TITLE,
+  type OptionSource,
+} from "./variant-options";
 
 export interface PriceGroup {
   /** Base price group id, as it appears in the price maps. */
@@ -38,11 +43,11 @@ export interface MappedVariant {
   /** Available quantity per Base warehouse key ("bl_153201"). */
   stock: Record<string, number>;
   /**
-   * Value of the product's single option. Medusa refuses to create a product
-   * without options, and Base has no equivalent concept, so one is derived
-   * from the variant name. Unique within the product.
+   * This variant's value for each of the product's options, keyed by option
+   * title. Derived from Base features where they describe the variants
+   * consistently, and from the variant name otherwise.
    */
-  option_value: string;
+  option_values: Record<string, string>;
   /**
    * True when Base had no variants and this one was built from the product.
    * Worth keeping: it tells the sync that the variant has no Base identity of
@@ -63,12 +68,15 @@ export interface MappedProduct {
   images: string[];
   thumbnail: string | null;
   /**
-   * Title of the single option carrying the variant values.
+   * The product's options and their values.
    *
    * createProductsWorkflow throws outright for a product with no options -
-   * "Product options are not provided for: [...]" - so this is not optional.
+   * "Product options are not provided for: [...]" - so there is always at
+   * least one, even if it had to be generated.
    */
-  option_title: string;
+  options: { title: string; values: string[] }[];
+  /** False when the options were generated because features were unusable. */
+  options_from_features: boolean;
   /**
    * Always at least one variant. Note there is deliberately no product-level
    * stock: for a product with variants, Base reports the parent's stock as the
@@ -85,11 +93,12 @@ export interface MapProductOptions {
    * collision free; Base allows several products to share a name.
    */
   takenHandles?: Set<string>;
-  /** Title of the generated product option. Defaults to "Variant". */
-  optionTitle?: string;
+  /**
+   * Features per Base variant id, from fetching variants as their own
+   * products. Without them only the generated fallback option is possible.
+   */
+  variantFeatures?: Record<string, Record<string, unknown> | null>;
 }
-
-export const DEFAULT_OPTION_TITLE = "Variant";
 
 /** Available stock is what Base holds minus what it has already reserved. */
 const availableStock = (
@@ -150,42 +159,20 @@ const mapVariant = (
   variant: BaseVariant,
   baseProductId: string,
   priceGroups: PriceGroup[],
-  optionValues: Set<string>
-): MappedVariant => {
-  const title = toText(variant.name) || baseVariantId;
-
-  return {
-    base_variant_id: baseVariantId,
-    base_product_id: baseProductId,
-    title,
-    sku: toTextOrNull(variant.sku),
-    ean: toTextOrNull(variant.ean),
-    prices: mapPrices(variant.prices, priceGroups),
-    // Base exposes reservations on the parent only, so variant stock is taken
-    // at face value. Erring toward the lower number is not an option here.
-    stock: availableStock(variant.stock),
-    option_value: uniqueOptionValue(title, optionValues),
-    is_synthetic: false,
-  };
-};
-
-/**
- * Two variants of one product may share a name in Base, but Medusa needs the
- * option values to differ, so duplicates get a numeric suffix.
- */
-const uniqueOptionValue = (value: string, taken: Set<string>): string => {
-  if (!taken.has(value)) {
-    taken.add(value);
-    return value;
-  }
-
-  let suffix = 2;
-  while (taken.has(`${value} ${suffix}`)) suffix++;
-
-  const unique = `${value} ${suffix}`;
-  taken.add(unique);
-  return unique;
-};
+  optionValues: Record<string, string>
+): MappedVariant => ({
+  base_variant_id: baseVariantId,
+  base_product_id: baseProductId,
+  title: toText(variant.name) || baseVariantId,
+  sku: toTextOrNull(variant.sku),
+  ean: toTextOrNull(variant.ean),
+  prices: mapPrices(variant.prices, priceGroups),
+  // Base exposes reservations on the parent only, so variant stock is taken
+  // at face value. Erring toward the lower number is not an option here.
+  stock: availableStock(variant.stock),
+  option_values: optionValues,
+  is_synthetic: false,
+});
 
 /**
  * Builds the single variant Medusa requires for a product Base holds without
@@ -203,7 +190,7 @@ const synthesizeVariant = (
   ean: toTextOrNull(product.ean),
   prices: mapPrices(product.prices, priceGroups),
   stock: availableStock(product.stock, product.reservations),
-  option_value: "Default",
+  option_values: { [FALLBACK_OPTION_TITLE]: "Default" },
   is_synthetic: true,
 });
 
@@ -224,12 +211,38 @@ export const mapBaseProduct = (
   const images = mapImages(product.images);
 
   const variantEntries = Object.entries(product.variants ?? {});
-  const optionValues = new Set<string>();
+
+  const sources: OptionSource[] = variantEntries.map(([variantId, variant]) => ({
+    id: variantId,
+    title: toText(variant.name) || variantId,
+    features: options.variantFeatures?.[variantId],
+  }));
+
+  const resolved = resolveVariantOptions(sources);
+
   const variants = variantEntries.length
     ? variantEntries.map(([variantId, variant]) =>
-        mapVariant(variantId, variant, baseProductId, priceGroups, optionValues)
+        mapVariant(
+          variantId,
+          variant,
+          baseProductId,
+          priceGroups,
+          resolved.valuesByVariant[variantId] ?? {}
+        )
       )
     : [synthesizeVariant(baseProductId, product, priceGroups)];
+
+  // A product with no variants still needs an axis for its synthesized one.
+  const optionTitles = resolved.titles.length
+    ? resolved.titles
+    : [FALLBACK_OPTION_TITLE];
+
+  const productOptions = optionTitles.map((title) => ({
+    title,
+    values: Array.from(
+      new Set(variants.map((variant) => variant.option_values[title] ?? ""))
+    ).filter((value) => value !== ""),
+  }));
 
   return {
     base_product_id: baseProductId,
@@ -242,7 +255,8 @@ export const mapBaseProduct = (
     length: toPositiveOrNull(product.length),
     images,
     thumbnail: images[0] ?? null,
-    option_title: options.optionTitle ?? DEFAULT_OPTION_TITLE,
+    options: productOptions,
+    options_from_features: resolved.fromFeatures,
     variants,
   };
 };

@@ -1,6 +1,6 @@
 # Base.com API recon
 
-Generated: 2026-09-04T21:19:22.429Z
+Generated: 2026-09-06T10:24:15.451Z
 
 Response shapes captured from a live account. They serve as the source of
 truth for mappings and for offline tests once the trial expires.
@@ -14,7 +14,7 @@ The sample below settles whether Base returns the same:
 
 ```json
 {
-  "product_id": 682782169,
+  "product_id": 683543721,
   "prices": {
     "100823": 49.99,
     "100830": 49.99
@@ -24,8 +24,8 @@ The sample below settles whether Base returns the same:
 
 ### Variants
 
-Products in sample: 9
-- with variants: 1
+Products in sample: 11
+- with variants: 3
 - without variants: 8
 
 Products without variants must receive a single default variant in Medusa,
@@ -138,15 +138,17 @@ Method: `getInventoryProductsStock`
 
 ```
   products: object{
-      682782169: object{product_id, stock, reservations}
-      682782170: object{product_id, stock, reservations, variants, variant_reservations}
-      682782173: object{product_id, stock, reservations}
-      682782174: object{product_id, stock, reservations}
-      682782175: object{product_id, stock, reservations}
-      682782176: object{product_id, stock, reservations}
-      682782177: object{product_id, stock, reservations}
-      682782178: object{product_id, stock, reservations}
-      682782179: object{product_id, stock, reservations}
+      683543721: object{product_id, stock, reservations}
+      683543727: object{product_id, stock, reservations, variants, variant_reservations}
+      683543744: object{product_id, stock, reservations, variants, variant_reservations}
+      683543767: object{product_id, stock, reservations, variants, variant_reservations}
+      683543779: object{product_id, stock, reservations}
+      683543784: object{product_id, stock, reservations}
+      683543786: object{product_id, stock, reservations}
+      683543791: object{product_id, stock, reservations}
+      683543796: object{product_id, stock, reservations}
+      683543802: object{product_id, stock, reservations}
+      683543807: object{product_id, stock, reservations}
     }
 ```
 
@@ -156,15 +158,17 @@ Method: `getInventoryProductsPrices`
 
 ```
   products: object{
-      682782169: object{product_id, prices}
-      682782170: object{product_id, prices, variants}
-      682782173: object{product_id, prices}
-      682782174: object{product_id, prices}
-      682782175: object{product_id, prices}
-      682782176: object{product_id, prices}
-      682782177: object{product_id, prices}
-      682782178: object{product_id, prices}
-      682782179: object{product_id, prices}
+      683543721: object{product_id, prices}
+      683543727: object{product_id, prices, variants}
+      683543744: object{product_id, prices, variants}
+      683543767: object{product_id, prices, variants}
+      683543779: object{product_id, prices}
+      683543784: object{product_id, prices}
+      683543786: object{product_id, prices}
+      683543791: object{product_id, prices}
+      683543796: object{product_id, prices}
+      683543802: object{product_id, prices}
+      683543807: object{product_id, prices}
     }
 ```
 
@@ -174,15 +178,17 @@ Method: `getInventoryProductsList`
 
 ```
   products: object{
-      682782169: object{id, ean, asin, sku, name, parent_id, stock, prices}
-      682782170: object{id, ean, asin, sku, name, parent_id, stock, prices}
-      682782173: object{id, ean, asin, sku, name, parent_id, stock, prices}
-      682782174: object{id, ean, asin, sku, name, parent_id, stock, prices}
-      682782175: object{id, ean, asin, sku, name, parent_id, stock, prices}
-      682782176: object{id, ean, asin, sku, name, parent_id, stock, prices}
-      682782177: object{id, ean, asin, sku, name, parent_id, stock, prices}
-      682782178: object{id, ean, asin, sku, name, parent_id, stock, prices}
-      682782179: object{id, ean, asin, sku, name, parent_id, stock, prices}
+      683543721: object{id, ean, asin, sku, name, parent_id, stock, prices}
+      683543727: object{id, ean, asin, sku, name, parent_id, stock, prices}
+      683543744: object{id, ean, asin, sku, name, parent_id, stock, prices}
+      683543767: object{id, ean, asin, sku, name, parent_id, stock, prices}
+      683543779: object{id, ean, asin, sku, name, parent_id, stock, prices}
+      683543784: object{id, ean, asin, sku, name, parent_id, stock, prices}
+      683543786: object{id, ean, asin, sku, name, parent_id, stock, prices}
+      683543791: object{id, ean, asin, sku, name, parent_id, stock, prices}
+      683543796: object{id, ean, asin, sku, name, parent_id, stock, prices}
+      683543802: object{id, ean, asin, sku, name, parent_id, stock, prices}
+      683543807: object{id, ean, asin, sku, name, parent_id, stock, prices}
     }
 ```
 
@@ -192,15 +198,32 @@ Method: `getInventoryProductsData`
 
 ```
   products: object{
-      682782169: object{is_bundle, ean, asin, parent_id, sku, tags, tax_rate, weight}
-      682782170: object{is_bundle, ean, asin, parent_id, sku, tags, tax_rate, weight}
-      682782173: object{is_bundle, ean, asin, parent_id, sku, tags, tax_rate, weight}
-      682782174: object{is_bundle, ean, asin, parent_id, sku, tags, tax_rate, weight}
-      682782175: object{is_bundle, ean, asin, parent_id, sku, tags, tax_rate, weight}
-      682782176: object{is_bundle, ean, asin, parent_id, sku, tags, tax_rate, weight}
-      682782177: object{is_bundle, ean, asin, parent_id, sku, tags, tax_rate, weight}
-      682782178: object{is_bundle, ean, asin, parent_id, sku, tags, tax_rate, weight}
-      682782179: object{is_bundle, ean, asin, parent_id, sku, tags, tax_rate, weight}
+      683543721: object{is_bundle, ean, asin, parent_id, sku, tags, tax_rate, weight}
+      683543727: object{is_bundle, ean, asin, parent_id, sku, tags, tax_rate, weight}
+      683543744: object{is_bundle, ean, asin, parent_id, sku, tags, tax_rate, weight}
+      683543767: object{is_bundle, ean, asin, parent_id, sku, tags, tax_rate, weight}
+      683543779: object{is_bundle, ean, asin, parent_id, sku, tags, tax_rate, weight}
+      683543784: object{is_bundle, ean, asin, parent_id, sku, tags, tax_rate, weight}
+      683543786: object{is_bundle, ean, asin, parent_id, sku, tags, tax_rate, weight}
+      683543791: object{is_bundle, ean, asin, parent_id, sku, tags, tax_rate, weight}
+      683543796: object{is_bundle, ean, asin, parent_id, sku, tags, tax_rate, weight}
+      683543802: object{is_bundle, ean, asin, parent_id, sku, tags, tax_rate, weight}
+      683543807: object{is_bundle, ean, asin, parent_id, sku, tags, tax_rate, weight}
+    }
+```
+
+### getInventoryProductsData_variants
+
+Method: `getInventoryProductsData`
+
+```
+  products: object{
+      683543731: object{is_bundle, ean, asin, parent_id, sku, tags, tax_rate, weight}
+      683543736: object{is_bundle, ean, asin, parent_id, sku, tags, tax_rate, weight}
+      683543752: object{is_bundle, ean, asin, parent_id, sku, tags, tax_rate, weight}
+      683543758: object{is_bundle, ean, asin, parent_id, sku, tags, tax_rate, weight}
+      683543770: object{is_bundle, ean, asin, parent_id, sku, tags, tax_rate, weight}
+      683543775: object{is_bundle, ean, asin, parent_id, sku, tags, tax_rate, weight}
     }
 ```
 
