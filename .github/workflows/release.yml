@@ -35,5 +35,32 @@ jobs:
       - name: Build plugin
         run: npm run build
 
+      # A tag that disagrees with package.json is the easiest release mistake
+      # to make, and the hardest to notice afterwards.
+      - name: Check the tag matches the package version
+        run: |
+          TAG="${GITHUB_REF_NAME#v}"
+          VERSION=$(node -p "require('./package.json').version")
+          if [ "$TAG" != "$VERSION" ]; then
+            echo "Tag $GITHUB_REF_NAME does not match package version $VERSION"
+            exit 1
+          fi
+
+      # Publishing a version that already exists fails the run. That happens
+      # for a first release published by hand, and on any re-run of a workflow
+      # that already got as far as publishing.
+      - name: Check whether this version is already on npm
+        id: check
+        run: |
+          NAME=$(node -p "require('./package.json').name")
+          VERSION=$(node -p "require('./package.json').version")
+          if npm view "$NAME@$VERSION" version > /dev/null 2>&1; then
+            echo "already=true" >> "$GITHUB_OUTPUT"
+            echo "$NAME@$VERSION is already published - skipping"
+          else
+            echo "already=false" >> "$GITHUB_OUTPUT"
+          fi
+
       - name: Publish to npm
+        if: steps.check.outputs.already == 'false'
         run: npm publish
