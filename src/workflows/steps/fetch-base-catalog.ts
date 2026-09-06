@@ -3,6 +3,7 @@ import { createStep, StepResponse } from "@medusajs/framework/workflows-sdk";
 import { BASE_MODULE } from "../../modules/base";
 import type BaseModuleService from "../../modules/base/service";
 import { mapBaseProducts, type MappedProduct } from "../../lib/product-mapper";
+import type { VariantStock } from "../../lib/stock-mapper";
 
 /** getInventoryProductsData accepts at most a thousand ids per call. */
 const BATCH_SIZE = 1000;
@@ -11,6 +12,12 @@ export interface FetchBaseCatalogOutput {
   products: MappedProduct[];
   /** Every Base id the listing returned, for the missing-product plan. */
   seenBaseProductIds: string[];
+  /**
+   * Stock per Base variant, taken from the catalog payload that was already
+   * fetched. A full sync therefore needs no extra call to leave inventory
+   * consistent.
+   */
+  stockByVariant: VariantStock;
 }
 
 /**
@@ -96,9 +103,17 @@ export const fetchBaseCatalogStep = createStep(
       )} variants; ${withRealOptions} use options derived from Base features`
     );
 
+    const stockByVariant: VariantStock = {};
+    for (const product of products) {
+      for (const variant of product.variants) {
+        stockByVariant[variant.base_variant_id] = variant.stock;
+      }
+    }
+
     return new StepResponse<FetchBaseCatalogOutput>({
       products,
       seenBaseProductIds: baseProductIds,
+      stockByVariant,
     });
   }
 );

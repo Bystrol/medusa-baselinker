@@ -9,6 +9,7 @@ import { splitProductsByMappingStep } from "./steps/split-products-by-mapping";
 import { createBaseProductsStep } from "./steps/create-base-products";
 import { updateBaseProductsStep } from "./steps/update-base-products";
 import { applyMissingProductsStep } from "./steps/apply-missing-products";
+import { syncInventoryLevelsStep } from "./steps/sync-inventory-levels";
 
 /**
  * Full catalog sync from Base into Medusa.
@@ -33,6 +34,13 @@ export const syncBaseCatalogWorkflow = createWorkflow(
       seenBaseProductIds: catalog.seenBaseProductIds,
     });
 
-    return new WorkflowResponse({ created, updated, withdrawn });
+    // `after` carries no data; it exists so the engine schedules this step
+    // once the products are written, rather than alongside them.
+    const stock = syncInventoryLevelsStep({
+      stockByVariant: catalog.stockByVariant,
+      after: [created, updated],
+    });
+
+    return new WorkflowResponse({ created, updated, withdrawn, stock });
   }
 );

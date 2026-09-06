@@ -8,6 +8,10 @@ import { BASE_MODULE } from "../../modules/base";
 import type BaseModuleService from "../../modules/base/service";
 import type { MappedProduct } from "../../lib/product-mapper";
 import { toProductPayload } from "../../lib/medusa-payload";
+import {
+  resolveSalesChannelId,
+  resolveShippingProfileId,
+} from "../resolve-defaults";
 
 export interface CreateBaseProductsInput {
   products: MappedProduct[];
@@ -41,13 +45,9 @@ export const createBaseProductsStep = createStep(
 
     const logger = container.resolve("logger");
     const baseService: BaseModuleService = container.resolve(BASE_MODULE);
-    const { sales_channel_id, shipping_profile_id } = baseService.options;
 
-    const salesChannelId = await resolveSalesChannel(container, sales_channel_id);
-    const shippingProfileId = await resolveShippingProfile(
-      container,
-      shipping_profile_id
-    );
+    const salesChannelId = await resolveSalesChannelId(container);
+    const shippingProfileId = await resolveShippingProfileId(container);
 
     const { result } = await createProductsWorkflow(container).run({
       input: {
@@ -118,50 +118,3 @@ export const createBaseProductsStep = createStep(
     }
   }
 );
-
-/**
- * Picks the sales channel new products are linked to.
- *
- * Falls back to the default channel with a warning rather than silently taking
- * whichever channel the database returns first, which is a coin flip on a
- * store with more than one.
- */
-const resolveSalesChannel = async (
-  container: any,
-  configured?: string
-): Promise<string | undefined> => {
-  if (configured) return configured;
-
-  const logger = container.resolve("logger");
-  const salesChannelService = container.resolve("sales_channel");
-  const channels = await salesChannelService.listSalesChannels({});
-
-  if (channels.length > 1) {
-    logger.warn(
-      `Base.com: sales_channel_id is not configured and the store has ${channels.length} channels - ` +
-        `falling back to "${channels[0]?.name}". Set sales_channel_id to make this deterministic.`
-    );
-  }
-
-  return channels[0]?.id;
-};
-
-const resolveShippingProfile = async (
-  container: any,
-  configured?: string
-): Promise<string | undefined> => {
-  if (configured) return configured;
-
-  const logger = container.resolve("logger");
-  const fulfillmentService = container.resolve("fulfillment");
-  const profiles = await fulfillmentService.listShippingProfiles({});
-
-  if (profiles.length > 1) {
-    logger.warn(
-      `Base.com: shipping_profile_id is not configured and the store has ${profiles.length} profiles - ` +
-        `falling back to "${profiles[0]?.name}". Set shipping_profile_id to make this deterministic.`
-    );
-  }
-
-  return profiles[0]?.id;
-};

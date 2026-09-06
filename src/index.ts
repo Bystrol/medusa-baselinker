@@ -10,3 +10,4 @@ export * from "./lib/missing-products";
 export * from "./lib/medusa-payload";
 
 export { syncBaseCatalogWorkflow } from "./workflows/sync-base-catalog";
+export { syncBaseStockWorkflow } from "./workflows/sync-base-stock";

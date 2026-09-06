@@ -2,11 +2,13 @@ import { createStep, StepResponse } from "@medusajs/framework/workflows-sdk";
 import {
   createStockLocationsWorkflow,
   deleteStockLocationsWorkflow,
+  linkSalesChannelsToStockLocationWorkflow,
 } from "@medusajs/medusa/core-flows";
 
 import { BASE_MODULE } from "../../modules/base";
 import type BaseModuleService from "../../modules/base/service";
 import { warehouseKey } from "../../lib/base-types";
+import { resolveSalesChannelId } from "../resolve-defaults";
 
 export interface SyncStockLocationsOutput {
   /** Base warehouse key ("bl_153201") to Medusa stock location id. */
@@ -32,6 +34,7 @@ export const syncStockLocationsStep = createStep(
     const baseService: BaseModuleService = container.resolve(BASE_MODULE);
 
     const warehouses = await baseService.getWarehouses();
+    const salesChannelId = await resolveSalesChannelId(container);
     const mappings = await baseService.listBaseLocationMappings({});
     const mapped = new Map(
       mappings.map((mapping) => [
@@ -72,6 +75,21 @@ export const syncStockLocationsStep = createStep(
       });
 
       const location = result[0];
+
+      // Without this link Medusa does not count the location's stock as
+      // available in the channel, so imported products stay unbuyable no
+      // matter how many units Base reports.
+      if (salesChannelId) {
+        await linkSalesChannelsToStockLocationWorkflow(container).run({
+          input: { id: location.id, add: [salesChannelId] },
+        });
+      } else {
+        logger.warn(
+          `Base.com: no sales channel to link stock location "${warehouse.name}" to - ` +
+            "its stock will not be available for sale"
+        );
+      }
+
       const [mapping] = await baseService.createBaseLocationMappings([
         {
           base_warehouse_id: key,
