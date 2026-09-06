@@ -1,13 +1,24 @@
 import { createStep, StepResponse } from "@medusajs/framework/workflows-sdk";
+import type { MedusaContainer } from "@medusajs/framework/types";
 import { ContainerRegistrationKeys } from "@medusajs/framework/utils";
 import { createOrderFulfillmentWorkflow } from "@medusajs/medusa/core-flows";
 
 import { BASE_MODULE } from "../../modules/base";
 import type BaseModuleService from "../../modules/base/service";
-import { planOrderUpdates, type OrderUpdate } from "../../lib/order-updates";
+import {
+  planOrderUpdates,
+  type BaseOrderState,
+  type OrderUpdate,
+} from "../../lib/order-updates";
 import { toText } from "../../lib/coerce";
 
 const DEFAULT_LOOKBACK_DAYS = 30;
+
+/** An order line, as far as creating a fulfillment is concerned. */
+interface FulfillableItem {
+  id: string;
+  quantity: number;
+}
 
 /**
  * Brings order status and tracking back from Base into Medusa.
@@ -53,7 +64,7 @@ export const syncBaseOrderStatusStep = createStep(
         tracking_number: mapping.tracking_number,
         fulfilled_at: mapping.fulfilled_at,
       })),
-      baseOrders: baseOrders as any[],
+      baseOrders: baseOrders as unknown as BaseOrderState[],
       shippedStatusIds: (baseService.options.shipped_status_ids ?? []).map(
         String
       ),
@@ -112,7 +123,7 @@ export const syncBaseOrderStatusStep = createStep(
  * level, so there is nothing to say which lines went into which parcel.
  */
 const fulfillOrder = async (
-  container: any,
+  container: MedusaContainer,
   baseService: BaseModuleService,
   update: OrderUpdate
 ): Promise<boolean> => {
@@ -127,8 +138,10 @@ const fulfillOrder = async (
     filters: { id: update.medusa_order_id },
   });
 
-  const order = (orders as any[])[0];
-  const items = (order?.items ?? []) as any[];
+  // Narrowed to the fields requested above, so a rename or a field that
+  // quietly resolves to nothing is a type error rather than a runtime one.
+  const order = (orders as { id: string; items?: FulfillableItem[] }[])[0];
+  const items = order?.items ?? [];
 
   if (!items.length) {
     logger.warn(

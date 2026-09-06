@@ -8,6 +8,27 @@
  * switch between number and string. Read them through src/lib/coerce.ts.
  */
 
+/**
+ * A Base inventory - the catalog products belong to.
+ *
+ * `warehouses` and `price_groups` list what this inventory accepts; writing
+ * stock to a warehouse it does not list is rejected by the API.
+ */
+export interface BaseInventory {
+  inventory_id: number;
+  name: string;
+  description: string;
+  languages: string[];
+  default_language: string;
+  price_groups: number[];
+  default_price_group: number;
+  /** Composite warehouse keys, e.g. "bl_153201". */
+  warehouses: string[];
+  default_warehouse: string;
+  reservations: boolean;
+  is_default: boolean;
+}
+
 export interface BasePriceGroup {
   price_group_id: number;
   name: string;

@@ -4,6 +4,7 @@ import { BASE_MODULE } from "../../modules/base";
 import type BaseModuleService from "../../modules/base/service";
 import { mapBaseProducts, type MappedProduct } from "../../lib/product-mapper";
 import type { VariantStock } from "../../lib/stock-mapper";
+import type { BaseProduct } from "../../lib/base-types";
 
 /** getInventoryProductsData accepts at most a thousand ids per call. */
 const BATCH_SIZE = 1000;
@@ -43,7 +44,7 @@ export const fetchBaseCatalogStep = createStep(
 
     const baseProductIds = await baseService.listProductIds();
 
-    const raw: Record<string, any> = {};
+    const raw: Record<string, BaseProduct> = {};
     for (let index = 0; index < baseProductIds.length; index += BATCH_SIZE) {
       const batch = baseProductIds.slice(index, index + BATCH_SIZE);
       logger.info(
@@ -58,7 +59,7 @@ export const fetchBaseCatalogStep = createStep(
     // the variants nested under a parent. A variant is a product in its own
     // right, so they are fetched again by their own ids; without this the
     // catalog can only ever have a single generated option.
-    const variantIds = Object.values(raw).flatMap((product: any) =>
+    const variantIds = Object.values(raw).flatMap((product) =>
       Object.keys(product.variants ?? {})
     );
 
@@ -69,7 +70,7 @@ export const fetchBaseCatalogStep = createStep(
 
       for (const [variantId, detail] of Object.entries(details)) {
         variantFeatures[variantId] =
-          ((detail as any).text_fields?.features as Record<string, unknown>) ??
+          (detail.text_fields?.features as Record<string, unknown> | undefined) ??
           null;
       }
     }

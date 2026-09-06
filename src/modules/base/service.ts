@@ -3,6 +3,7 @@ import type { Logger } from "@medusajs/framework/types";
 
 import { BaseClient } from "../../lib/base-client";
 import type {
+  BaseInventory,
   BaseProduct,
   BaseProductListItem,
   BaseProductStock,
@@ -115,11 +116,11 @@ class BaseModuleService extends MedusaService({
 
     const response = await this.client_.call("getInventories");
     const inventories = Object.values(
-      (response.inventories ?? {}) as Record<string, any>
+      (response.inventories ?? {}) as Record<string, BaseInventory>
     );
 
     const inventory =
-      inventories.find((entry: any) => entry.is_default) ?? inventories[0];
+      inventories.find((entry) => entry.is_default) ?? inventories[0];
 
     if (!inventory) {
       throw new Error(

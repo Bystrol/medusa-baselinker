@@ -6,11 +6,33 @@ import type BaseModuleService from "../../modules/base/service";
 import {
   toBaseOrderPayload,
   toOrderLine,
+  type MedusaOrderItem,
+  type OrderAddress,
   type OrderLine,
 } from "../../lib/order-mapper";
 
 export interface ExportBaseOrderInput {
   orderId: string;
+}
+
+/**
+ * The shape query.graph returns for ORDER_FIELDS.
+ *
+ * Declared here rather than trusting the query to be typed: query.graph
+ * returns whatever the requested fields resolve to, and a field that silently
+ * resolves to nothing - as items.quantity does without items.* - is exactly
+ * the failure this codebase has hit repeatedly.
+ */
+interface OrderRow {
+  id: string;
+  display_id?: number | null;
+  email?: string | null;
+  currency_code: string;
+  created_at: string;
+  shipping_address?: OrderAddress | null;
+  billing_address?: OrderAddress | null;
+  shipping_methods?: { name?: string | null; amount?: number | null }[] | null;
+  items?: (MedusaOrderItem & { variant_id?: string | null })[] | null;
 }
 
 export interface ExportBaseOrderResult {
@@ -104,10 +126,10 @@ export const exportBaseOrderStep = createStep(
       filters: { id: orderId },
     });
 
-    const order = (orders as any[])[0];
+    const order = (orders as OrderRow[])[0];
     if (!order) return fail("the order could not be read from Medusa");
 
-    const items = (order.items ?? []) as any[];
+    const items = order.items ?? [];
     if (!items.length) return fail("the order has no line items");
 
     const variantIds = items
@@ -125,6 +147,14 @@ export const exportBaseOrderStep = createStep(
 
     const lines: OrderLine[] = [];
     for (const item of items) {
+      // Medusa allows a line with no variant at all - a custom item added to
+      // a draft order. Base has nothing to match it against.
+      if (!item.variant_id) {
+        return fail(
+          `line "${item.title}" has no variant and cannot be matched to a Base product`
+        );
+      }
+
       const mapped = mappingByVariant.get(item.variant_id);
 
       // Exporting a partial order would understate what the warehouse has to
@@ -138,7 +168,7 @@ export const exportBaseOrderStep = createStep(
       lines.push(toOrderLine(item, mapped.base_variant_id, mapped.ean));
     }
 
-    const shippingMethods = (order.shipping_methods ?? []) as any[];
+    const shippingMethods = order.shipping_methods ?? [];
     const inventoryId = await baseService.getInventoryId();
 
     const payload = toBaseOrderPayload({
