@@ -20,6 +20,13 @@ export const BaseOrderMapping = model.define("base_order_mapping", {
   courier_code: model.text().nullable(),
   /** Set when export failed, so failures are visible instead of silent. */
   export_error: model.text().nullable(),
+  /**
+   * Set once Medusa holds a fulfillment for this order.
+   *
+   * Without it a later poll would create a second fulfillment every time it
+   * saw the same tracking number.
+   */
+  fulfilled_at: model.dateTime().nullable(),
   exported_at: model.dateTime().nullable(),
   last_synced_at: model.dateTime().nullable(),
 });

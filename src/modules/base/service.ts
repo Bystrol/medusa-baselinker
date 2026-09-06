@@ -44,6 +44,18 @@ export interface BaseModuleOptions {
    * looks identical to a mass withdrawal. Defaults to 0.2.
    */
   max_missing_ratio?: number;
+  /**
+   * Base status ids that mean an order has shipped. Optional: an order that
+   * has acquired a tracking number is treated as shipped regardless, which
+   * covers most setups without mapping account-specific ids.
+   */
+  shipped_status_ids?: (string | number)[];
+  /**
+   * How far back the order status sync looks, in days. Base cannot filter by
+   * modification date - only by confirmation date - so a window has to be
+   * re-read on each poll. Defaults to 30.
+   */
+  order_sync_lookback_days?: number;
 }
 
 type InjectedDependencies = {
@@ -238,12 +250,28 @@ class BaseModuleService extends MedusaService({
    * polls this instead of the event journal - the journal is always empty.
    */
   async getOrdersSince(timestamp: number): Promise<Record<string, unknown>[]> {
-    const response = await this.client_.call("getOrders", {
-      date_confirmed_from: timestamp,
-      get_unconfirmed_orders: true,
-    });
+    const orders: Record<string, unknown>[] = [];
+    let idFrom: number | undefined;
 
-    return (response.orders ?? []) as Record<string, unknown>[];
+    // Base caps a response at 100 orders and pages by id rather than offset.
+    for (;;) {
+      const response = await this.client_.call("getOrders", {
+        date_confirmed_from: timestamp,
+        get_unconfirmed_orders: true,
+        ...(idFrom ? { id_from: idFrom } : {}),
+      });
+
+      const page = (response.orders ?? []) as Record<string, unknown>[];
+      orders.push(...page);
+
+      if (page.length < 100) break;
+
+      const lastId = Number(page[page.length - 1]?.order_id);
+      if (!Number.isFinite(lastId)) break;
+      idFrom = lastId + 1;
+    }
+
+    return orders;
   }
 
   async getOrderPackages(orderId: string): Promise<Record<string, unknown>[]> {
