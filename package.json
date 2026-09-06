@@ -1,22 +1,26 @@
 {
-  "name": "medusa-base",
-  "version": "0.0.1",
+  "name": "medusa-baselinker",
+  "version": "0.1.0",
   "description": "Base.com (formerly BaseLinker) integration for MedusaJS v2 - catalog and stock sync, order export, status and tracking sync back",
   "license": "MIT",
   "author": "Michał Bystryk (https://digity.studio/)",
   "homepage": "https://digity.studio/",
   "repository": {
     "type": "git",
-    "url": "https://github.com/michalbystryk/medusa-base.git"
+    "url": "https://github.com/michalbystryk/medusa-baselinker.git"
   },
   "keywords": [
-    "medusa-plugin-integration",
+    "medusa",
     "medusa-v2",
     "medusa-plugin",
+    "medusa-plugin-integration",
+    "medusa-plugin-erp",
     "base",
     "base.com",
     "baselinker",
-    "erp"
+    "erp",
+    "inventory-sync",
+    "order-sync"
   ],
   "exports": {
     ".": "./.medusa/server/src/index.js",
@@ -33,8 +37,11 @@
   },
   "files": [
     ".medusa",
+    "!.medusa/server/scripts/**",
     "!.medusa/server/**/__tests__/**",
-    "!.medusa/server/**/__mocks__/**"
+    "!.medusa/server/**/__mocks__/**",
+    "README.md",
+    "LICENSE"
   ],
   "scripts": {
     "build": "medusa plugin:build",
