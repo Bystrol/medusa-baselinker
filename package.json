@@ -1,6 +1,6 @@
 {
   "name": "medusa-baselinker",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "description": "Base.com (formerly BaseLinker) integration for MedusaJS v2 - catalog and stock sync, order export, status and tracking sync back",
   "license": "MIT",
   "author": "Michał Bystryk (https://digity.studio/)",
