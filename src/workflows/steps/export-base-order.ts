@@ -10,6 +10,7 @@ import {
   type OrderAddress,
   type OrderLine,
 } from "../../lib/order-mapper";
+import { resolvePayment } from "../../lib/payment";
 
 export interface ExportBaseOrderInput {
   orderId: string;
@@ -33,6 +34,10 @@ interface OrderRow {
   billing_address?: OrderAddress | null;
   shipping_methods?: { name?: string | null; amount?: number | null }[] | null;
   items?: (MedusaOrderItem & { variant_id?: string | null })[] | null;
+  payment_collections?: {
+    captured_amount?: number | null;
+    payments?: { provider_id?: string | null }[] | null;
+  }[] | null;
 }
 
 export interface ExportBaseOrderResult {
@@ -59,6 +64,12 @@ const ORDER_FIELDS = [
   // asking for items.quantity returns nothing at all.
   "items.detail.*",
   "items.tax_lines.*",
+  // Same rule as items.*: naming individual sub-fields returns nothing at all,
+  // so the whole shape has to be requested. The order's own payment_status is
+  // deliberately absent - it is computed and does not come back at all, which
+  // is why the captured amount is the source instead.
+  "payment_collections.*",
+  "payment_collections.payments.*",
 ];
 
 /**
@@ -171,6 +182,21 @@ export const exportBaseOrderStep = createStep(
     const shippingMethods = order.shipping_methods ?? [];
     const inventoryId = await baseService.getInventoryId();
 
+    const collections = order.payment_collections ?? [];
+    const payment = resolvePayment({
+      // One provider per order in practice; the first payment names it.
+      providerId: collections
+        .flatMap((collection) => collection.payments ?? [])
+        .map((entry) => entry.provider_id)
+        .find((id) => !!id),
+      capturedAmount: collections.reduce(
+        (sum, collection) => sum + Number(collection.captured_amount ?? 0),
+        0
+      ),
+      codProviderIds: baseService.options.cod_payment_providers ?? [],
+      labels: baseService.options.payment_method_labels ?? {},
+    });
+
     const payload = toBaseOrderPayload({
       medusa_order_id: order.id,
       display_id: order.display_id,
@@ -190,6 +216,8 @@ export const exportBaseOrderStep = createStep(
       storage_id: `bl_${inventoryId}`,
       order_status_id: await baseService.getOrderStatusId(),
       custom_source_id: baseService.options.custom_source_id,
+      payment_method: payment.payment_method,
+      payment_method_cod: payment.payment_method_cod,
     });
 
     let baseOrderId: string;
@@ -207,6 +235,22 @@ export const exportBaseOrderStep = createStep(
       exported_at: new Date(),
       export_error: null,
     });
+
+    // The amount paid needs its own call - addOrder has no field for it. A
+    // failure here is logged rather than raised: the order is already in Base,
+    // and failing now would leave the export looking unfinished while risking
+    // a duplicate on the next attempt.
+    if (payment.payment_done > 0) {
+      try {
+        await baseService.setOrderPayment(baseOrderId, payment.payment_done);
+      } catch (error) {
+        logger.warn(
+          `Base.com: order ${orderId} exported, but recording the ${payment.payment_done} paid failed: ${
+            (error as Error).message
+          }`
+        );
+      }
+    }
 
     logger.info(`Base.com: exported order ${orderId} as ${baseOrderId}`);
 

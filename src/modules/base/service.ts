@@ -57,6 +57,18 @@ export interface BaseModuleOptions {
    * re-read on each poll. Defaults to 30.
    */
   order_sync_lookback_days?: number;
+  /**
+   * Payment provider ids the merchant treats as cash on delivery, e.g.
+   * ["pp_system_default"]. Medusa has no such concept of its own, and the
+   * flag decides whether the courier collects money on delivery - so it
+   * cannot be guessed.
+   */
+  cod_payment_providers?: string[];
+  /**
+   * Friendly payment labels per provider id, shown in the Base panel and used
+   * by its automation rules. Unmapped providers fall back to their id.
+   */
+  payment_method_labels?: Record<string, string>;
 }
 
 type InjectedDependencies = {
@@ -243,6 +255,22 @@ class BaseModuleService extends MedusaService({
     });
 
     return String(response.order_id ?? "");
+  }
+
+  /**
+   * Records how much has been paid for an order.
+   *
+   * addOrder has no field for this - it accepts a `paid` key and silently
+   * ignores it - so the amount has to be sent separately once the order
+   * exists.
+   */
+  async setOrderPayment(orderId: string, amount: number): Promise<void> {
+    await this.client_.call("setOrderPayment", {
+      order_id: Number(orderId),
+      payment_done: amount,
+      payment_date: Math.floor(Date.now() / 1000),
+      payment_comment: "Medusa",
+    });
   }
 
   /**

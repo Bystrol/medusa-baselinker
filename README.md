@@ -64,6 +64,8 @@ fall back log a warning naming what they picked.
 | `missing_product_strategy` | `"draft" \| "delete" \| "ignore"` | `"draft"` | What happens to a product that disappears from Base. |
 | `max_missing_ratio` | `number` | `0.2` | Largest share of products one sync may withdraw before refusing to act. |
 | `order_sync_lookback_days` | `number` | `30` | How far back the order status sync looks. |
+| `cod_payment_providers` | `string[]` | `[]` | Payment provider ids that mean cash on delivery. |
+| `payment_method_labels` | `Record<string, string>` | `{}` | Friendly payment names per provider id. |
 | `requests_per_minute` | `number` | `100` | Base's own limit. Lower it to leave room for other clients. |
 
 ### Why `missing_product_strategy` defaults to draft
@@ -146,6 +148,38 @@ Fix the cause, then `POST /admin/base/orders/:id/export`.
 An order with any unmapped line is not sent at all: a partial order would
 understate what the warehouse has to pack.
 
+## Payment
+
+Base never takes money. Payment runs through a Medusa provider, and Base is
+only told the operational consequence: what has been collected, and whether
+the courier still has to collect the rest.
+
+```ts
+cod_payment_providers: ["pp_system_default"],
+payment_method_labels: { pp_system_default: "Cash on delivery" },
+```
+
+**`cod_payment_providers` has to be configured if you sell cash on delivery.**
+Medusa has no such concept — it is a manual provider, a custom one, or
+sometimes a shipping option — so the plugin cannot infer it. The flag decides
+whether the courier collects money on delivery and what goes on the label: a
+cash-on-delivery order sent as prepaid ships without collecting anything.
+
+What Base receives:
+
+| Order | `payment_method_cod` | Amount recorded as paid |
+| --- | --- | --- |
+| Provider listed in `cod_payment_providers` | yes | 0 |
+| Payment captured | no | the captured amount |
+| Payment authorized but not captured | no | 0 |
+
+An authorization is money reserved, not money taken, so it counts as unpaid —
+the warehouse cares about what has actually arrived.
+
+The amount is sent with a separate `setOrderPayment` call, because `addOrder`
+accepts a `paid` field and silently ignores it. A payment captured *after* the
+order was exported is not pushed to Base; record it there by hand.
+
 ## What this plugin does not do
 
 - **No fulfillment provider.** Base's shipping methods are not available in the
@@ -153,6 +187,8 @@ understate what the warehouse has to pack.
   passed along with the order.
 - **No returns or cancellations from Base.** Status and tracking come back;
   a cancellation in Base does not cancel the Medusa order.
+- **No payment sync after export.** The amount paid is sent once, when the
+  order is exported. Capturing a payment later does not update Base.
 - **No catalog push.** Products created in Medusa stay in Medusa.
 - **Stock is written, not adjusted.** Each sync writes the quantity Base
   reports. This is deliberate: a missed run or a double-applied delta would

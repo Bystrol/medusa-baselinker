@@ -55,6 +55,15 @@ export interface OrderExportInput {
   storage_id: string;
   order_status_id?: number;
   custom_source_id?: number;
+  /** Payment label shown in Base and used by its automation rules. */
+  payment_method?: string;
+  /** Whether the courier collects the money on delivery. */
+  payment_method_cod?: boolean;
+  /**
+   * Amount already collected. Not part of this payload: addOrder ignores it,
+   * so it is sent separately with setOrderPayment once the order exists.
+   */
+  payment_done?: number;
   /** Comment the customer left with the order. */
   customer_note?: string | null;
 }
@@ -131,8 +140,8 @@ export const toBaseOrderPayload = (
     custom_source_id: input.custom_source_id,
     date_add: toUnixSeconds(input.created_at),
     currency: toText(input.currency_code).toUpperCase(),
-    payment_method: "Medusa",
-    payment_method_cod: false,
+    payment_method: toText(input.payment_method) || "Medusa",
+    payment_method_cod: input.payment_method_cod ?? false,
     email: toText(input.email),
     phone: toText(input.phone ?? shipping?.phone),
     user_comments: toText(input.customer_note),
