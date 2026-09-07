@@ -255,6 +255,19 @@ differs per price group.
 records a tracking number without contacting any courier, so it cannot produce
 a billable shipping label.
 
+## Commercial support
+
+Setting this up in a live store — mapping your Base statuses, configuring the
+automatic actions that turn an order into a shipment, or adapting the plugin to
+how your warehouse actually works — is something we do for a living.
+
+If you would rather not do it yourself, get in touch at
+[digity.studio](https://digity.studio/).
+
+Bug reports and questions about the plugin itself belong in
+[GitHub issues](https://github.com/Bystrol/medusa-baselinker/issues) and are
+free.
+
 ## Licence
 
 MIT
