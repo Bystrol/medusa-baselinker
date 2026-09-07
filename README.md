@@ -66,6 +66,7 @@ fall back log a warning naming what they picked.
 | `order_sync_lookback_days` | `number` | `30` | How far back the order status sync looks. |
 | `cod_payment_providers` | `string[]` | `[]` | Payment provider ids that mean cash on delivery. |
 | `payment_method_labels` | `Record<string, string>` | `{}` | Friendly payment names per provider id. |
+| `pickup_point_data_keys` | `string[]` | `["target_point", "point_id", "pickup_point_id"]` | Where to find the pickup point id in a shipping method's data. |
 | `requests_per_minute` | `number` | `100` | Base's own limit. Lower it to leave room for other clients. |
 
 ### Why `missing_product_strategy` defaults to draft
@@ -147,6 +148,36 @@ Fix the cause, then `POST /admin/base/orders/:id/export`.
 
 An order with any unmapped line is not sent at all: a partial order would
 understate what the warehouse has to pack.
+
+## Delivery and pickup points
+
+The shipping method the customer chose is sent as its name and price. Base is
+not asked which courier that is: mapping a delivery method to one of its 473
+couriers is what Base's own automatic actions are for, and that rule belongs
+where the merchant can edit it rather than in a plugin release.
+
+What the plugin does pass is the **pickup point**, when the checkout produced
+one. Base reads the locker or parcel shop from the order's
+`delivery_point_id` — the courier's own parcel form has no field for it — so
+without this an operator has to paste the point id in by hand for every
+parcel, and no automatic action can create the shipment.
+
+Where that id sits depends on whichever plugin handled the checkout, and
+carriers agree on no convention, so the keys are configuration:
+
+```ts
+pickup_point_data_keys: ["target_point", "point_id", "pickup_point_id"],
+```
+
+The defaults cover the common cases, including the `target_point` written by
+[medusa-inpost-fulfillment](https://www.npmjs.com/package/medusa-inpost-fulfillment),
+so a Paczkomat order works without configuring anything. Dotted paths reach a
+nested value (`point.id`). An order delivered to an address names no point and
+is unaffected.
+
+Only the id is sent. Base also stores a point name and address, but carrier
+plugins do not consistently keep them, so those fields stay empty — the id is
+what a shipment needs.
 
 ## Payment
 

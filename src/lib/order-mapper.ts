@@ -66,6 +66,12 @@ export interface OrderExportInput {
   payment_done?: number;
   /** Comment the customer left with the order. */
   customer_note?: string | null;
+  /**
+   * Locker or pickup point the customer chose. Base reads it from the order
+   * rather than from the parcel form, so without it the shipment cannot be
+   * created automatically.
+   */
+  pickup_point_id?: string | null;
 }
 
 /** Shape of a Medusa order line, narrowed to what the export needs. */
@@ -161,6 +167,7 @@ export const toBaseOrderPayload = (
     delivery_city: toText(shipping?.city),
     delivery_state: toText(shipping?.province),
     delivery_country_code: toText(shipping?.country_code).toUpperCase(),
+    delivery_point_id: toText(input.pickup_point_id),
 
     invoice_fullname: fullName(billing),
     invoice_company: toText(billing?.company),

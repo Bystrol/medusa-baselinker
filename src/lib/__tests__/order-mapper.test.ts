@@ -165,6 +165,22 @@ describe("toBaseOrderPayload", () => {
     assert.equal(payload.products[0].ean, undefined);
   });
 
+  test("passes the pickup point to Base", () => {
+    // Base reads the locker from the order, so this is what lets it create
+    // the shipment without anyone typing the id in by hand.
+    const payload = toBaseOrderPayload(
+      baseInput({ pickup_point_id: "KRA010" })
+    ) as any;
+
+    assert.equal(payload.delivery_point_id, "KRA010");
+  });
+
+  test("leaves the pickup point empty for a delivery to an address", () => {
+    const payload = toBaseOrderPayload(baseInput()) as any;
+
+    assert.equal(payload.delivery_point_id, "");
+  });
+
   test("passes the configured status and source through", () => {
     const payload = toBaseOrderPayload(baseInput()) as any;
 

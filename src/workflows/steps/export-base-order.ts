@@ -11,6 +11,10 @@ import {
   type OrderLine,
 } from "../../lib/order-mapper";
 import { resolvePayment } from "../../lib/payment";
+import {
+  findPickupPointId,
+  DEFAULT_PICKUP_POINT_KEYS,
+} from "../../lib/pickup-point";
 
 export interface ExportBaseOrderInput {
   orderId: string;
@@ -32,7 +36,12 @@ interface OrderRow {
   created_at: string;
   shipping_address?: OrderAddress | null;
   billing_address?: OrderAddress | null;
-  shipping_methods?: { name?: string | null; amount?: number | null }[] | null;
+  shipping_methods?: {
+    name?: string | null;
+    amount?: number | null;
+    /** Carrier-specific payload; where a chosen pickup point ends up. */
+    data?: Record<string, unknown> | null;
+  }[] | null;
   items?: (MedusaOrderItem & { variant_id?: string | null })[] | null;
   payment_collections?: {
     captured_amount?: number | null;
@@ -213,6 +222,10 @@ export const exportBaseOrderStep = createStep(
         0
       ),
       lines,
+      pickup_point_id: findPickupPointId(
+        shippingMethods,
+        baseService.options.pickup_point_data_keys ?? DEFAULT_PICKUP_POINT_KEYS
+      ),
       storage_id: `bl_${inventoryId}`,
       order_status_id: await baseService.getOrderStatusId(),
       custom_source_id: baseService.options.custom_source_id,

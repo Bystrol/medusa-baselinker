@@ -69,6 +69,13 @@ export interface BaseModuleOptions {
    * by its automation rules. Unmapped providers fall back to their id.
    */
   payment_method_labels?: Record<string, string>;
+  /**
+   * Where to find the pickup point id in a shipping method's data. Carrier
+   * plugins agree on no convention, so the keys are configuration; dotted
+   * paths reach a nested value. Defaults cover the common ones, including the
+   * `target_point` written by the InPost fulfillment plugin.
+   */
+  pickup_point_data_keys?: string[];
 }
 
 type InjectedDependencies = {
